@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+
+@font-face {
+  font-family: 'Intro-Rust';
+  src: url('./assets/fonts/intro-rust/IntroRust-Base.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: 'Intro-Rust';
+  src: url('./fonts/intro-rust/IntroRustH2-Base2Line.otf');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: 'Intro-Rust';
+  src: url('./fonts/intro-rust/IntroRustL-Base2Line.otf');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+:root {
+  --primary-font: "Nunito Sans", sans-serif;
+  --secondary-font: "Intro-Rust", sans-serif;
+  --primary-font-color: #1271b8;
+  --secondary-color: #27f0c8;
+  --form-bg: #9acaed;
+  --gray: #7d7b7b;
+  --dark: #3c3c3c
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; 
+}
+
+
+h2, h3 {
+  font-family: var(--secondary-font);
+}
+
+body {
+  font-family: var(--primary-font);
+  color: var(--primary-font-color);
+}
+
+.main_section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  /* text-align: center; */
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+input,
+select {
+  font-family: var(--primary-font);
+}
+
+input:placeholder-shown,
+select:placeholder-shown {
+  text-transform: capitalize;
+}
+
+button {
+  outline: none;
+  border: none;
+  font-size: 20px;
+  background-color: #27f0c8;
+  border-radius: 20px;
+  color: white;
+  width: 100%;
+  padding: .5rem;
+  text-transform: capitalize;
+  font-family: var(--primary-font);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(197 192 192);
+  color: #dfdada;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.chatbot {
+  position: fixed;
+  z-index: 99;
+  bottom: 10px;
+  right: 10px;
+  width: 95%;
+  margin: auto; 
+}
+
+.chatbot .chatbot-icons {
+  font-size: 30px;
+  position: relative;
+}
+
+.chatopen {
+  position: absolute;
+  right: 10px;
+  bottom: 30px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 30px;
+  border-radius: 50%;
+  text-align: center;
+  z-index: 9999;
+}
+
+.chatbot img {
+  width: 100%;
+}
+
+.chatbot .react-chatbot-kit-chat-container {
+  width: 100%;
+}
+
+.chatbot .react-chatbot-kit-chat-bot-message {
+  margin-left: 0;
+}
+
+.chatbot .react-chatbot-kit-chat-header {
+  background-color: var(--primary-font-color);
+  color: #fff;
+  font-size: 18px;
+  font-family: var(--primary-font);
+}
+
+.chatbot .react-chatbot-kit-chat-input {
+  outline: none;
+  border-top: 1px solid var(--primary-font-color);
+}
+
+.start-btn-wrapper {
+  /* display: flex;
+  justify-content: center; */
+  padding: 0 2rem;
+}
+
+.start-btn {
+  width: fit-content;
+  font-size: 15px;
+  color: var(--primary-font-color);
+  font-weight: 600;
+  margin-right: .5rem;
+  margin-bottom: .2rem;
+  padding: .5rem 1rem;
+}
+  
+.bot-btn {
+  width: 100%;
+  display: flex;
+
+}
+
+
+.bot-btn .start-btn {
+  padding: .5rem 1.5rem;
+  min-width: 200px;
+  margin: .4rem 0;
+}
+
+.desktop {
+  display: none;
+}
+
+@media (min-width:768px) {
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .chatbot {
+    width: 40%;
+  }
+}
+
+@media (min-width:1024px) {
+
+  .chatopen {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+}
+
+@media (min-width:1280px) {
+  .chatbot {
+    width: 25%;
+  }
+}
