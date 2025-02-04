@@ -1,6 +1,6 @@
 import style from './Innovatingprice.module.css'
 import { Link } from 'react-router-dom'
-import { angle } from '../../../../public/images/Nunki/nunkiImages'
+import { angle } from '/public/images/Nunki/nunkiImages'
 
 const ProductBox = ({price, styles, tab, min_desk, desktop, color, dark}) => {
   const mystyle = {

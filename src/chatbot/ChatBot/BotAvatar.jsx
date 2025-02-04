@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { headset } from '../../../public/images/Nunki/nunkiImages'
+import { headset } from '/public/images/Nunki/nunkiImages'
 
 const BotAvatar = () => {
   const Avatar = styled.div `

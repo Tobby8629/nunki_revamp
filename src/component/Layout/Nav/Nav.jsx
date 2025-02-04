@@ -4,7 +4,7 @@ import style from "./Nav.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { useMobileView } from '../../utils/useMobile';
-import { logo } from '../../../../public/images/Nunki/nunkiImages';
+import { logo } from '/public/images/Nunki/nunkiImages';
 import { menu, productLinks } from '../../../constants';
 
 
@@ -12,9 +12,8 @@ import { menu, productLinks } from '../../../constants';
 const Nav = () => {
   const location = useLocation();
   const isMobile = useMobileView();
-  const [currentLogo, setCurrentLogo] = useState(logo);
+  // const [currentLogo, setCurrentLogo] = useState(logo);
   const [logoText, setLogoText] = useState('');
-
   const [navlink, setnavlink] = useState(menu);
 
   const myRef = useRef(null);
@@ -32,7 +31,7 @@ const Nav = () => {
       setLogoText(matchingLink.name);
     } else {
       setLogoText('');
-      setCurrentLogo(logo);
+      // setCurrentLogo(logo);
     }
   }, [location, isMobile]);
 
@@ -58,7 +57,7 @@ const Nav = () => {
             <h2 className={style.logoText}>{logoText}</h2>
             </div>
           ) : (
-            <img src={currentLogo} alt='logo' />
+            <img src={logo} alt='logo' />
           )}
         </Link>
         <div className={style.icon} onClick={showslide}>
@@ -72,7 +71,7 @@ const Nav = () => {
                   <a className={style.drop}>
                      <h3> 
                       {link?.name} 
-                      <FontAwesomeIcon className={style.linkicon} icon={link?.show ? faAngleDown : ""} />
+                      <FontAwesomeIcon className={style.linkicon} icon={link?.show ? faAngleDown : faAngleRight} />
                      </h3>   
                   </a>
                   

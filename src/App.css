@@ -49,9 +49,9 @@ body {
 }
 
 .main_section {
-  max-width: 1280px;
+  max-width: 1350px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   /* text-align: center; */
 }
 
@@ -198,6 +198,10 @@ li {
 }
 
 @media (min-width:1024px) {
+
+  .main_section {
+    padding: 2rem;
+  }
 
   .chatopen {
     width: 50px;

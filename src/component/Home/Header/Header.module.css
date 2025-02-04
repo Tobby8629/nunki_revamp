@@ -1,12 +1,12 @@
 .headerwrapper{
-  height: 100vh;
+  max-height: 100vh;
   background-color: #fff;
   background-image: url('../../../assets/bg.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   padding: 2rem;
-  padding-top: 135px;
+  padding-top: 180px;
 }
 
 .header {
@@ -21,12 +21,14 @@
   font-weight: 400;
   font-size: 25px;
   line-height: 40px;
+  text-align: center;
 }
 
 .header p {
   font-size: 22px;
   font-weight: 300;
   line-height: 32px;
+  text-align: center;
 }
 
 .image,
@@ -36,8 +38,7 @@
 }
 
 .image {
-  margin: 0 auto;
-  margin-bottom: 5px;
+  margin: 1rem auto;
 }
 
 .image {
@@ -95,18 +96,17 @@
   font-family: var(--primary-font);
 }
 
-@media (min-width: 557px) {
-  .headerwrapper {
-    height: 95vh;
-  }
-}
-
-
 @media (min-width: 768px) {
+
+  .header p, 
+  .header h2 {
+    text-align: left;
+  }
+
   .headerwrapper {
-    padding: 1rem;
-    padding-top: 100px;
-    height: 75vh;
+    padding: 2rem  1rem;
+    padding-top: 150px;
+    max-height: 80vh;
     display: flex;
     align-items: center;
     background-image: url('../../../assets/desktop-bg.jpg');
@@ -148,11 +148,11 @@
   .text .button {
     display: block;
     margin: 1rem 0;
-    width: 63%;
+    width: 60%;
   }
 
   .text .button button {
-    font-size: 18px;
+    font-size: 15px;
     background-color: var(--primary-font-color);
     cursor: pointer;
   }
@@ -161,9 +161,9 @@
 @media (min-width: 1024px) {
 
   .headerwrapper {
-    height: 100vh;
+    max-height: 100vh;
     padding: 4rem;
-    padding-top: 100px;
+    padding-top: 180px;
     /* margin-left: 4rem;
     padding-left: 5rem; */
   }
@@ -175,17 +175,29 @@
   }
 
   .text {
-    width: 43%
+    width: 60%
   }
 
-  .text p {
-    width: 80%;
+  .header .text p {
+    width: 85%;
+    font-size: 26px
+  }
+
+  .text h2 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 60px;
   }
 
   .text .button {
     display: block;
     margin: 1rem 0;
-    width: 61%;
+    width: 45%;
+  }
+
+  .text .button button {
+    font-size: 16px;
+    padding: 1rem 0;
   }
 
   .header p {
@@ -208,7 +220,7 @@
   }
 
   .header h2 {
-    font-size: 52px;
+    font-size: 50px;
     font-weight: 500;
     line-height: 70px;
   }

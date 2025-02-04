@@ -1,7 +1,7 @@
-import { grey, ai, kids, funeral_cover } from '../../public/images/blog/blog'
+import { grey, ai, kids, funeral_cover } from '/public/images/blog/blog'
 import { chat, cash, emergency, healthInsurance, medical, repatration, shackproduct, support, telemed, Tutor, funeral } from '../../public/images/productImage/ProductImage'
-import { Dark } from '../../public/images/dark/Dark'
-import { light } from '../../public/images/light/Light'
+import { Dark } from '/public/images/dark/Dark'
+import { light } from '/public/images/light/Light'
 
 export const products = [
   {

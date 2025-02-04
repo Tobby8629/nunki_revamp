@@ -1,4 +1,4 @@
-import { logo } from '../../../../public/images/Nunki/nunkiImages'
+import { botLogo } from '/public/images/Nunki/nunkiImages'
 import style from './Header.module.css'
 import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ const Header = () => {
       <header className={`main_section ${style.headerwrapper}`}>
         <div className={style.header}>
           <div className={style.image}>
-            <img src={logo} alt='brand logo' />
+            <img src={botLogo} alt='brand logo' />
           </div>
           <div className={style.text}>
             <h2>Shine Brighter with <br/>NUNKI Insurance</h2>
