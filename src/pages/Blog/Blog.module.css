@@ -23,6 +23,9 @@
 
 .header_text p {
   margin-bottom: 1rem;
+  font-size: 18px;
+  line-height: 36px;
+  text-align: center;
 }
 
 .btn {
@@ -112,6 +115,16 @@
   transform: translateY(17px);
 }
 
+@media (min-width: 550px) {
+  .header_img,
+  .header_text {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  
+}
+
 @media (min-width: 768px) {
   .header {
     display: flex;
@@ -131,13 +144,15 @@
   .header_text h2 {
     text-align: left;
     margin: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     font-size: 30px;
   }
 
   .header_text p {
-    line-height: 28px;
-    font-size: 18px;
+    line-height: 38px;
+    font-size: 20px;
+    margin-bottom: 1.2rem;
+    text-align: left;
   }
 
   .btn {
@@ -172,19 +187,23 @@
     align-items: flex-start;
     padding: 2rem;
   }
+
+  .header_text {
+    width: 45%;
+  }
   
   .header_text h2 {
     font-size: 38px;
   }
 
   .header_text p {
-    line-height: 39px;
+    line-height: 45px;
     font-size: 22px;
     margin-bottom: 1.3rem;
   }
 
   .btn a {
-    font-size: 21px;
+    font-size: 18px;
   }
 
   .blogs {
@@ -198,7 +217,7 @@
   }
 
   .blogs_btn button {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
@@ -219,9 +238,6 @@
     margin-right: 3rem;
   }
 
-  .header_text {
-    width: 45%;
-  }
 
   .header_text h2 {
     font-size: 40px;
@@ -230,8 +246,8 @@
   }
 
   .header_text p {
-    line-height: 60px;
-    font-size: 32px;
+    line-height: 50px;
+    font-size: 24px;
   }
 
   .btn {
@@ -239,12 +255,12 @@
   }
 
   .btn a {
-    font-size: 28px;
+    font-size: 25px;
   }
 
   .blogs_wrapper h3 {
-    font-size: 30px;
-    line-height: 44px;
+    font-size: 26px;
+    line-height: 40px;
     margin-bottom: 3.5rem;
   }
 
@@ -258,7 +274,7 @@
   }
 
   .blogs_btn button {
-    font-size: 32px;
+    font-size: 22px;
     transform: translateY(49px);
   }
 }
