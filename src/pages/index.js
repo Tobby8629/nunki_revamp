@@ -1,8 +1,12 @@
-import React from 'react'
+import React from "react";
 
 // import Shack from './Shack'
-const Home = React.lazy(() => import ('./Home'))
-const Blog = React.lazy(() => import ('./Blog/Blog'))
+const Home = React.lazy(() => import("./Home"));
+const Blog = React.lazy(() => import("./Blog/Blog"));
+const Difference = React.lazy(() => import("./Difference"));
+const ComingSoon = React.lazy(() =>
+  import("../component/comingSoon/ComingSoon")
+);
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -31,8 +35,8 @@ export const routes = [
 
   {
     route: "/blogs",
-    element: Blog
-  }
+    element: Blog,
+  },
   // {
   //   route: "/prices",
   //   element: GetPrices,
@@ -43,10 +47,10 @@ export const routes = [
   //   element: Blog,
   // },
 
-  // {
-  //   route: "/differences",
-  //   element: Difference,
-  // },
+  {
+    route: "/differences",
+    element: Difference,
+  },
 
   // {
   //   route: "/result",
@@ -72,39 +76,36 @@ export const routes = [
   //   route: "/blogs/:name",
   //   element: BlogContent,
   // },
-  
 
-  // {
-  //   route: "/products/shack/insure",
-  //   element: Shack,
-  // },
+  {
+    route: "/products/shack/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/teacher_online/insure",
-  //   element: Tutor,
-  // },
+  {
+    route: "/products/teacher_online/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/mortal_remains/insure",
-  //   element: Reapatration,
-  // },
+  {
+    route: "/products/mortal_remains/insure",
+    element: ComingSoon,
+  },
 
+  {
+    route: "/products/funeral/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/funeral/insure",
-  //   element: Funeral,
-  // },
+  {
+    route: "/products/merchant/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/merchant/insure",
-  //   element: Merchant,
-  // },
-
-
-  // {
-  //   route: "/products/medical_advice/insure",
-  //   element: MedicalAdvice,
-  // },
+  {
+    route: "/products/medical_advice/insure",
+    element: ComingSoon,
+  },
 
   // {
   //   route: "/products/emergencymedicalresponse/insure",
@@ -170,7 +171,7 @@ export const routes = [
   //   route: "/products/trauma_counselling/insure/:form_link",
   //   element: TraumaCounselling,
   // },
-  
+
   // {
   //   route: "/products/discount_funeral/insure/:form_link",
   //   element: DiscountFuneral,
@@ -180,7 +181,4 @@ export const routes = [
   //   route: "/products/clinic/insure/:form_link",
   //   element: TraumaAsult,
   // },
-
-]
-
-
+];
