@@ -4,6 +4,9 @@ import React from "react";
 const Home = React.lazy(() => import("./Home"));
 const Blog = React.lazy(() => import("./Blog/Blog"));
 const Difference = React.lazy(() => import("./Difference"));
+const ComingSoon = React.lazy(() =>
+  import("../component/comingSoon/ComingSoon")
+);
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -74,35 +77,35 @@ export const routes = [
   //   element: BlogContent,
   // },
 
-  // {
-  //   route: "/products/shack/insure",
-  //   element: Shack,
-  // },
+  {
+    route: "/products/shack/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/teacher_online/insure",
-  //   element: Tutor,
-  // },
+  {
+    route: "/products/teacher_online/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/mortal_remains/insure",
-  //   element: Reapatration,
-  // },
+  {
+    route: "/products/mortal_remains/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/funeral/insure",
-  //   element: Funeral,
-  // },
+  {
+    route: "/products/funeral/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/merchant/insure",
-  //   element: Merchant,
-  // },
+  {
+    route: "/products/merchant/insure",
+    element: ComingSoon,
+  },
 
-  // {
-  //   route: "/products/medical_advice/insure",
-  //   element: MedicalAdvice,
-  // },
+  {
+    route: "/products/medical_advice/insure",
+    element: ComingSoon,
+  },
 
   // {
   //   route: "/products/emergencymedicalresponse/insure",
