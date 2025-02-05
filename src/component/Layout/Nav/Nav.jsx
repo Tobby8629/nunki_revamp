@@ -57,7 +57,7 @@ const Nav = () => {
                   <a className={style.drop}>
                      <h3> 
                       {link?.name} 
-                      <FontAwesomeIcon className={style.linkicon} icon={link?.show ? faAngleDown : ""} />
+                      <FontAwesomeIcon className={style.linkicon} icon={link?.show ? faAngleDown :  faAngleRight} />
                      </h3>   
                   </a>
                   

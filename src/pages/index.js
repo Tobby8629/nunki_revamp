@@ -1,5 +1,8 @@
+import React from 'react'
+
 // import Shack from './Shack'
-import Home from './Home'
+const Home = React.lazy(() => import ('./Home'))
+const Blog = React.lazy(() => import ('./Blog/Blog'))
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -26,6 +29,10 @@ export const routes = [
     element: Home,
   },
 
+  {
+    route: "/blogs",
+    element: Blog
+  }
   // {
   //   route: "/prices",
   //   element: GetPrices,

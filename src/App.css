@@ -48,6 +48,11 @@ body {
   color: var(--primary-font-color);
 }
 
+.wrapper {
+  padding-top: 125px;
+  overflow: hidden;
+}
+
 .main_section {
   max-width: 1350px;
   margin: 0 auto;
