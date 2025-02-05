@@ -12,29 +12,15 @@ import { menu, productLinks } from '../../../constants';
 const Nav = () => {
   const location = useLocation();
   const isMobile = useMobileView();
-  // const [currentLogo, setCurrentLogo] = useState(logo);
-  const [logoText, setLogoText] = useState('');
   const [navlink, setnavlink] = useState(menu);
-
   const myRef = useRef(null);
   const [show, setshow] = useState(false);
   const showslide = () => setshow(true);
   const hideslide = () => setshow(false);
-
   const opensub = (name) => {
     setnavlink(prev => prev.map(e => e.name === name ? { ...e, show: !e?.show } : e));
   };
-
-  useEffect(() => {
-    const matchingLink = productLinks.find(product => location.pathname.includes(product.link));
-    if (isMobile && matchingLink) {
-      setLogoText(matchingLink.name);
-    } else {
-      setLogoText('');
-      // setCurrentLogo(logo);
-    }
-  }, [location, isMobile]);
-
+  const matchingLink = productLinks.find(product => location.pathname.includes(product.link));
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (myRef.current && !myRef.current.contains(event.target)) {
@@ -52,9 +38,9 @@ const Nav = () => {
     <nav className={style.nav}>
       <div className={`${style.wrapper} main_section`}>
         <Link to='/' className={style.image}>
-          {logoText ? (
+          {matchingLink && isMobile ? (
             <div className={style.logoContainer}>
-            <h2 className={style.logoText}>{logoText}</h2>
+              <h2 className={style.logoText}>{matchingLink.name}</h2>
             </div>
           ) : (
             <img src={logo} alt='logo' />
@@ -71,7 +57,7 @@ const Nav = () => {
                   <a className={style.drop}>
                      <h3> 
                       {link?.name} 
-                      <FontAwesomeIcon className={style.linkicon} icon={link?.show ? faAngleDown : faAngleRight} />
+                      <FontAwesomeIcon className={style.linkicon} icon={link?.show ? faAngleDown : ""} />
                      </h3>   
                   </a>
                   
@@ -120,3 +106,17 @@ const Nav = () => {
 }
 
 export default Nav;
+
+
+ // useEffect(() => {
+  //   const matchingLink = productLinks.find(product => location.pathname.includes(product.link));
+  //   if (isMobile && matchingLink) {
+  //     setLogoText(matchingLink.name);
+  //   } else {
+  //     setLogoText('');
+  //     setCurrentLogo(logo);
+  //   }
+  // }, [location, isMobile]);
+
+  // const [currentLogo, setCurrentLogo] = useState(logo);
+  // const [logoText, setLogoText] = useState('');
