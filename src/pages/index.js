@@ -7,6 +7,8 @@ const Difference = React.lazy(() => import("./Difference"));
 const ComingSoon = React.lazy(() =>
   import("../component/comingSoon/ComingSoon")
 );
+const Telemedicine = React.lazy(() => import("./Telemedicine/Telemedicine"));
+const Screen = React.lazy(() => import("./Screen"));
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -127,15 +129,15 @@ export const routes = [
   //   element: TraumaAsult,
   // },
 
-  // {
-  //  route: '/products/tele_medicine/insure',
-  //  element: Telemedicine,
-  // },
+  {
+    route: "/products/tele_medicine/insure",
+    element: Telemedicine,
+  },
 
-  // {
-  //   route: '/products/tele_medicine/insure_',
-  //   element: Screen,
-  //  },
+  {
+    route: "/products/tele_medicine/insure_",
+    element: Screen,
+  },
 
   // {
   //   route: "/products/shack/insure/:form_link",
