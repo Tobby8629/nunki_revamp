@@ -1,8 +1,9 @@
-import React from 'react'
+import React from "react";
 
 // import Shack from './Shack'
-const Home = React.lazy(() => import ('./Home'))
-const Blog = React.lazy(() => import ('./Blog/Blog'))
+const Home = React.lazy(() => import("./Home"));
+const Blog = React.lazy(() => import("./Blog/Blog"));
+const Difference = React.lazy(() => import("./Difference"));
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -31,8 +32,8 @@ export const routes = [
 
   {
     route: "/blogs",
-    element: Blog
-  }
+    element: Blog,
+  },
   // {
   //   route: "/prices",
   //   element: GetPrices,
@@ -43,10 +44,10 @@ export const routes = [
   //   element: Blog,
   // },
 
-  // {
-  //   route: "/differences",
-  //   element: Difference,
-  // },
+  {
+    route: "/differences",
+    element: Difference,
+  },
 
   // {
   //   route: "/result",
@@ -72,7 +73,6 @@ export const routes = [
   //   route: "/blogs/:name",
   //   element: BlogContent,
   // },
-  
 
   // {
   //   route: "/products/shack/insure",
@@ -89,7 +89,6 @@ export const routes = [
   //   element: Reapatration,
   // },
 
-
   // {
   //   route: "/products/funeral/insure",
   //   element: Funeral,
@@ -99,7 +98,6 @@ export const routes = [
   //   route: "/products/merchant/insure",
   //   element: Merchant,
   // },
-
 
   // {
   //   route: "/products/medical_advice/insure",
@@ -170,7 +168,7 @@ export const routes = [
   //   route: "/products/trauma_counselling/insure/:form_link",
   //   element: TraumaCounselling,
   // },
-  
+
   // {
   //   route: "/products/discount_funeral/insure/:form_link",
   //   element: DiscountFuneral,
@@ -180,7 +178,4 @@ export const routes = [
   //   route: "/products/clinic/insure/:form_link",
   //   element: TraumaAsult,
   // },
-
-]
-
-
+];
