@@ -1,18 +1,14 @@
 import React, { createContext, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
 import style from "./Tele.module.css";
 import { TelemedInputs } from "../../assets/data";
-import { newTelemedicine } from "../../redux/telemedicineSlice";
-import { newCustomer } from "../../redux/customerSlice";
-import { newQuote } from "../../redux/qouteSlice";
+import UseQuery from "../../api/query";
+import useCustomMutation from "../../api/Mutation";
 import Swal from "sweetalert2";
-import PaymentForm from "../../component/ShackInsure/PaymentForm ";
-export const FormContext = createContext();
 import { InputSwitch } from "../../component/TeleMedicine/formQuestion/InputSwitch";
+import PaymentForm from "../../component/Payment/PaymentForm";
+export const FormContext = createContext();
 
 const Telemedicine = () => {
-  const dispatch = useDispatch();
   const [tab, setTab] = useState(0);
   const [form, setform] = useState({});
   const pages = ["name", "identification", "terms"];
@@ -20,7 +16,6 @@ const Telemedicine = () => {
   const [loading, setLoading] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
-
   console.log(form);
 
   useEffect(() => {
@@ -67,6 +62,9 @@ const Telemedicine = () => {
     }
   };
 
+  const { mutate: handleSubmitMutation, isLoading: isSubmitting } =
+    useCustomMutation();
+
   const handleSubmit = async () => {
     const requirefields = [
       "firstName",
@@ -101,11 +99,17 @@ const Telemedicine = () => {
       signature: form.terms === true ? "accepted" : "declined",
       product_name: "Tele Medicine",
     };
+
     setLoading(true);
+
     try {
-      const telemedicineResponse = await dispatch(
-        newTelemedicine(telemedicine)
-      );
+      // Use Mutation to submit telemedicine request
+      const telemedicineResponse = await handleSubmitMutation({
+        method: "POST",
+        endpoint: "telemedicine", // Update with your actual endpoint
+        params: telemedicine,
+      });
+
       if (telemedicineResponse && !telemedicineResponse.error) {
         await dispatchNewCustomer();
         await dispatchNewQuote();
@@ -137,7 +141,11 @@ const Telemedicine = () => {
       signature: form.terms === true ? "signed" : "unsigned",
     };
 
-    await dispatch(newCustomer(customer));
+    await handleSubmitMutation({
+      method: "POST",
+      endpoint: "customers", // Update with the actual endpoint
+      params: customer,
+    });
   };
 
   const dispatchNewQuote = async () => {
@@ -149,7 +157,11 @@ const Telemedicine = () => {
       quote_status: "pending",
     };
 
-    await dispatch(newQuote(quote));
+    await handleSubmitMutation({
+      method: "POST",
+      endpoint: "qoutes", // Update with the actual endpoint
+      params: quote,
+    });
   };
 
   const addAccountToCareFirst = async (telemedicine) => {
@@ -177,15 +189,8 @@ const Telemedicine = () => {
           },
         }
       );
+
       if (response.status === 200) {
-        // Swal.fire({
-        //     title: 'Account Added Successfully',
-        //     html: `Account Reference: <strong>${telemedicine.account_reference}</strong><br>
-        //            <span style="color: red;">Please keep your Account Reference in a safe place!</span>
-        //     `,
-        //     icon: 'success',
-        //     confirmButtonText: 'OK'
-        // });
         setShowPayment(true);
       } else {
         throw new Error("Error adding account to CareFirst");
@@ -233,8 +238,8 @@ const Telemedicine = () => {
               )}
 
               {tab === pages.length - 1 ? (
-                <button onClick={switchTab} disabled={loading}>
-                  {loading ? "Activating..." : "Continue"}
+                <button onClick={switchTab} disabled={loading || isSubmitting}>
+                  {loading || isSubmitting ? "Activating..." : "Continue"}
                 </button>
               ) : (
                 <button onClick={switchTab}>Continue</button>

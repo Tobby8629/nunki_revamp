@@ -1,0 +1,19 @@
+.inputWrapper {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.inputStyle {
+  width: 100%;
+  padding: .8rem;
+  border: none;
+  outline: none;
+  background-color: #e4f3ffd9;
+}
+
+/** This is for phone number Input **/
+.inputStyle input {
+  border: 0;
+  outline: none;
+  background-color: transparent;
+}
