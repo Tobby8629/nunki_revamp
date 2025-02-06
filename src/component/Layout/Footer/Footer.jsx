@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2'; 
 // import banner from '../../../assets/Nunki/logo.png';
 import { Link } from 'react-router-dom';
@@ -8,9 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FaSquareXTwitter } from "react-icons/fa6";
 // import { newSubscriber } from '../../../redux/subscriberSlice';
-import Query from '../../../api/query';
 import { logo } from '../../../../public/images/Nunki/nunkiImages';
 import UseQuery from '../../../api/query';
+import useCustomMutation from '../../../api/Mutation';
+import { useQueryClient } from '@tanstack/react-query';
+
+;
 
 const Footer = () => {
   const [links, setlinks] = useState([
@@ -33,7 +36,7 @@ const Footer = () => {
   ]);
 
   const [email, setEmail] = useState('');
-  const [isSubscribing, setIsSubscribing] = useState(false);
+//   const [isSubscribing, setIsSubscribing] = useState(false);
 //   const dispatch = useDispatch();
 
 //   const getEmals = async () => {
@@ -48,11 +51,85 @@ const Footer = () => {
 
 
   const {data, isLoading} = UseQuery({query:'getEmails', method:'get', endpoint:'subscribers'})
-  console.log(data, "data")
+  const {mutate, data: subscribed, isLoading: subLoading, error } = useCustomMutation()
+  const queryClient = useQueryClient()
+//   console.log(data, "data")
+  console.log(subscribed, subLoading, "request")
 
-  const handleSubscribe = async () => {
+//   const handleSubscribe = async () => {
+//     if (!email) {
+//       Swal.fire({
+//         background: '#f4f4f4',
+//         width: 300,
+//         position: "center",
+//         icon: 'error',
+//         title: 'Empty Email',
+//         text: 'Please enter your email address before subscribing.',
+//         showConfirmButton: true,
+//       });
+//       return;
+//     }
+
+//     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     if (!emailPattern.test(email)) {
+//       Swal.fire({
+//         width: 300,
+//         icon: 'error',
+//         title: 'Invalid Email',
+//         text: 'Please enter a valid email address.',
+//         showConfirmButton: true,
+//       });
+//       return;
+//     }
+
+//     setIsSubscribing(true);
+
+//     try {
+//       const emails = await getEmals();
+//       const isSubscribed = emails.some((e) => e.email === email);
+//       if (isSubscribed) {
+//         Swal.fire({
+//           width: 300,
+//           icon: 'error',
+//           title: 'Already Subscribed',
+//           text: 'You have already subscribed with this email address.',
+//           showConfirmButton: true,
+//         });
+//         return;
+//       }
+//       const subscription = {
+//         email: email,
+//         subscription_date: new Date().toISOString()
+//       };
+
+//       await dispatch(newSubscriber(subscription));
+//       Swal.fire({
+//         width: 300,
+//         position: "center",
+//         icon: 'success',
+//         title: 'Subscription Successful!',
+//         text: 'Thank you for subscribing.',
+//         showConfirmButton: true,
+//       });
+//       setEmail('');
+//     } catch (error) {
+//       console.error(error);
+//       Swal.fire({
+//         width: 300,
+//         icon: 'error',
+//         title: 'Subscription Failed',
+//         text: 'An error occurred while subscribing. Please try again later.',
+//         showConfirmButton: true,
+//       });
+//     } finally {
+//       setIsSubscribing(false);
+//     }
+//   };
+
+
+const handleSubscribe = async () => {
     if (!email) {
-      Swal.fire({
+        Swal.fire({
         background: '#f4f4f4',
         width: 300,
         position: "center",
@@ -60,27 +137,18 @@ const Footer = () => {
         title: 'Empty Email',
         text: 'Please enter your email address before subscribing.',
         showConfirmButton: true,
-      });
-      return;
+        });
+        return;
     }
-
+  
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      Swal.fire({
-        width: 300,
-        icon: 'error',
-        title: 'Invalid Email',
-        text: 'Please enter a valid email address.',
-        showConfirmButton: true,
-      });
+      console.log("invalid email");
       return;
     }
-
-    setIsSubscribing(true);
-
+  
     try {
-      const emails = await getEmals();
-      const isSubscribed = emails.some((e) => e.email === email);
+      const isSubscribed = data?.some((e) => e.email === email);
       if (isSubscribed) {
         Swal.fire({
           width: 300,
@@ -91,34 +159,34 @@ const Footer = () => {
         });
         return;
       }
-      const subscription = {
-        email: email,
-        subscription_date: new Date().toISOString()
-      };
-
-      await dispatch(newSubscriber(subscription));
-      Swal.fire({
-        width: 300,
-        position: "center",
-        icon: 'success',
-        title: 'Subscription Successful!',
-        text: 'Thank you for subscribing.',
-        showConfirmButton: true,
-      });
-      setEmail('');
+  
+      mutate({
+          method: "post",
+          endpoint: "subscribers",
+          params: { email, subscription_date: new Date().toISOString()}
+        },
+        {
+          onSuccess: (response) => {
+            console.log(response)
+            queryClient.invalidateQueries(['getEmails']); // Refetch the subscriber list
+            setEmail('');
+            Swal.fire({
+              width: 300,
+              position: "center",
+              icon: 'success',
+              title: 'Subscription Successful!',
+              text: 'Thank you for subscribing.',
+              showConfirmButton: true,
+            });
+          }
+        }
+      );
+  
     } catch (error) {
       console.error(error);
-      Swal.fire({
-        width: 300,
-        icon: 'error',
-        title: 'Subscription Failed',
-        text: 'An error occurred while subscribing. Please try again later.',
-        showConfirmButton: true,
-      });
-    } finally {
-      setIsSubscribing(false);
     }
   };
+
 
   return (
     <footer className={footer.footer}>
@@ -138,8 +206,8 @@ const Footer = () => {
               onChange={(e) => setEmail(e.target.value)}
               required 
             />
-            <button onClick={handleSubscribe} disabled={isSubscribing}>
-              {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+            <button onClick={handleSubscribe} disabled={subLoading}>
+              {subLoading ? 'Subscribing...' : 'Subscribe'}
             </button>
           </div>
         </div>

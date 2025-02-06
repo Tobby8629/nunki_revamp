@@ -3,7 +3,7 @@ import React from "react";
 // import Shack from './Shack'
 const Home = React.lazy(() => import("./Home"));
 const Blog = React.lazy(() => import("./Blog/Blog"));
-const Difference = React.lazy(() => import("./Difference"));
+const Difference = React.lazy(() => import("./Diffference/Difference"));
 const ComingSoon = React.lazy(() =>
   import("../component/comingSoon/ComingSoon")
 );
