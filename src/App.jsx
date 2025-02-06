@@ -23,16 +23,16 @@ function App() {
       <Nav />
       <ChatBot />
       <ScrollToTop />
-        <Suspense  fallback={<div>Loading...</div>}>
-          <Routes>
-            {routes.map((route) => (
-              <Route path={route?.route} element={route?.element ? <route.element /> : <ComingSoon />} key={route?.route} />
-            ))}
-            {products.map((product) => (
-              <Route key={product?.id} path={product?.link} element={product?.unavailable ? <ComingSoon /> : <Product product={product} />} />
-            ))}
-          </Routes>
-        </Suspense>
+      <Suspense  fallback={<div>Loading...</div>}>
+        <Routes>
+          {routes.map((route) => (
+            <Route path={route?.route} element={route?.element ? <route.element /> : <ComingSoon />} key={route?.route} />
+          ))}
+          {products.map((product) => (
+            <Route key={product?.id} path={product?.link} element={product?.unavailable ? <ComingSoon /> : <Product product={product} />} />
+          ))}
+        </Routes>
+      </Suspense>
       {!hideFooter && <Footer />}
     </QueryClientProvider>
   )
