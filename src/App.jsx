@@ -1,7 +1,7 @@
 import './App.css'
 import Nav from './component/Layout/Nav/Nav'
 import 'react-chatbot-kit/build/main.css'
-import { Routes, Route, useLocation, matchPath, Router } from 'react-router-dom'
+import { Routes, Route, useLocation, matchPath } from 'react-router-dom'
 import Footer from './component/Layout/Footer/Footer'
 import ChatBot from './chatbot/ChatBot/Index'
 import Product from './component/products/Product'

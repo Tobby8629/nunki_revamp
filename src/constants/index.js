@@ -1,5 +1,6 @@
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faTelegramPlane } from '@fortawesome/free-brands-svg-icons'
+import Swal from 'sweetalert2';
 
 export const menu = [
     { name: 'Home', link: '/', mobileOnly: true },
@@ -88,7 +89,38 @@ export const blog_points = [
     point_header_text: "The Nunki difference",
     point_body: `We promise to be there, like the steadfast star Nunki, guiding our clients through the uncertainties of life. With Nunki Africa, 
     you’re not just insured; you’re understood, supported, and empowered.
-    Join us, and experience the Nunki Difference—where every policy is a promise, and every benefit is a bridge to a brighter future.
+    Join us, and experience the Nunki Difference—where every policy is a promise, and every benefit is a bridge to a brighter future.
     `,
   },
 ];
+
+export const footerLinks = [
+  {header: "products", links: [
+    {name:'Funeral Cover', link:'/products/funeral/insure'}, 
+    {name:'Teacher Online', link:'products/teacher_online/insure'},
+    {name:'Shack Insurance', link:'/products/shack/insure'},
+    {name:'Medical Advice', link:'/products/medical_advice'},
+    {name:'Emergency Medical Response', link:'/products/emergencymedicalresponse'}
+  ]},
+  {header: "company", links: [
+    {name:'About us', link:'/about'}, 
+    {name:'Blogs', link:'/blogs'},
+    {name:'Nunki difference', link:'/differences'},
+  ]},
+  {header: "Help", links: [
+    {name:'FAQs', link:'/faqs'},
+    {name:'Contact Us', link:'/contact'},
+  ]},
+];
+
+export  const Alert = (icon, title, text,background) => {
+  Swal.fire({
+    background: background,
+    width: 300,
+    position: "center",
+    icon: icon,
+    title: title,
+    text: text,
+    showConfirmButton: true,
+    });
+}
