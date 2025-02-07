@@ -13,9 +13,9 @@ const Telemedicine = () => {
   const [form, setform] = useState({});
   const pages = ["name", "identification", "terms"];
   const [fields, setFields] = useState([]);
-  // const [loading, setLoading] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Local loading state
 
   useEffect(() => {
     const filter = currentPage(TelemedInputs, pages, tab);
@@ -34,8 +34,28 @@ const Telemedicine = () => {
     accountReference: accountReference,
   };
 
-  const { mutateAsync: handleSubmitMutation, isLoading: isSubmitting } =
-    useCustomMutation();
+  const { mutateAsync: handleSubmitMutation } = useCustomMutation();
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    setErrorMessages([]); // Reset error messages
+
+    try {
+      await handleTelemedicine(
+        form,
+        values,
+        accountReference,
+        handleSubmitMutation,
+        setShowPayment
+      );
+    } catch (error) {
+      setErrorMessages([
+        error.message || "An error occurred during submission.",
+      ]);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
@@ -69,54 +89,22 @@ const Telemedicine = () => {
                   </div>
                 )}
 
-                {tab === pages.length - 1 ? (
-                  <button
-                    onClick={() =>
-                      switchTab(
-                        TelemedInputs,
-                        tab,
-                        pages,
-                        form,
-                        setErrorMessages,
-                        setTab,
-                        () =>
-                          handleTelemedicine(
-                            form,
-                            values,
-                            accountReference,
-                            handleSubmitMutation,
-                            setShowPayment
-                          )
-                      )
-                    }
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Activating..." : "Continue"}
-                  </button>
-                ) : (
-                  <button
-                    onClick={() =>
-                      switchTab(
-                        TelemedInputs,
-                        tab,
-                        pages,
-                        form,
-                        setErrorMessages,
-                        setTab,
-                        () =>
-                          handleTelemedicine(
-                            form,
-                            values,
-                            accountReference,
-                            handleSubmitMutation,
-                            setShowPayment
-                          )
-                      )
-                    }
-                  >
-                    Continue
-                  </button>
-                )}
+                <button
+                  onClick={() => {
+                    switchTab(
+                      TelemedInputs,
+                      tab,
+                      pages,
+                      form,
+                      setErrorMessages,
+                      setTab,
+                      handleSubmit // Call the new handleSubmit function
+                    );
+                  }}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Activating..." : "Continue"}
+                </button>
               </div>
             </>
           )}
