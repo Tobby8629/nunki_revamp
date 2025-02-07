@@ -16,16 +16,13 @@ const Telemedicine = () => {
   // const [loading, setLoading] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
-  console.log(pages[tab]);
 
   useEffect(() => {
-    const filter = currentPage(TelemedInputs, pages, tab)
+    const filter = currentPage(TelemedInputs, pages, tab);
     if (filter.length > 0) {
       setFields(filter);
     }
   }, [tab]);
-
-
 
   const generateAccountReference = () => {
     return Math.random().toString(36).substring(2, 10).toUpperCase();
@@ -37,8 +34,9 @@ const Telemedicine = () => {
     accountReference: accountReference,
   };
 
-  const { mutate: handleSubmitMutation, isLoading: isSubmitting } =  useCustomMutation();
- 
+  const { mutateAsync: handleSubmitMutation, isLoading: isSubmitting } =
+    useCustomMutation();
+
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
       <section className={`${style.wrapper} msin_section`}>
@@ -72,23 +70,57 @@ const Telemedicine = () => {
                 )}
 
                 {tab === pages.length - 1 ? (
-                  <button onClick={()=>switchTab(
-                    TelemedInputs, tab, pages, form, setErrorMessages, setTab, 
-                    () => handleTelemedicine(form, values, accountReference,handleSubmitMutation, setShowPayment)
-                  )} disabled={isSubmitting}>
+                  <button
+                    onClick={() =>
+                      switchTab(
+                        TelemedInputs,
+                        tab,
+                        pages,
+                        form,
+                        setErrorMessages,
+                        setTab,
+                        () =>
+                          handleTelemedicine(
+                            form,
+                            values,
+                            accountReference,
+                            handleSubmitMutation,
+                            setShowPayment
+                          )
+                      )
+                    }
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Activating..." : "Continue"}
                   </button>
                 ) : (
-                  <button onClick={()=>switchTab(
-                    TelemedInputs, tab, pages, form, setErrorMessages, setTab,
-                    () => handleTelemedicine(form, values, accountReference,handleSubmitMutation, setShowPayment)
-                  )}>Continue</button>
+                  <button
+                    onClick={() =>
+                      switchTab(
+                        TelemedInputs,
+                        tab,
+                        pages,
+                        form,
+                        setErrorMessages,
+                        setTab,
+                        () =>
+                          handleTelemedicine(
+                            form,
+                            values,
+                            accountReference,
+                            handleSubmitMutation,
+                            setShowPayment
+                          )
+                      )
+                    }
+                  >
+                    Continue
+                  </button>
                 )}
               </div>
             </>
           )}
         </div>
-        
       </section>
     </FormContext.Provider>
   );
