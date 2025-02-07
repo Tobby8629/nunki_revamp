@@ -1,0 +1,167 @@
+/* Global Styles */
+:root {
+  --primary-font-color: #1271B8; /* Adjust this color as needed */
+}
+
+.wrapper {
+  background-color: var(--primary-font-color);
+  padding: 1rem 1.5rem;
+  padding-top: 130px;
+}
+
+.wrapper h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: capitalize;
+  line-height: 32px;
+}
+
+.main {
+  width: 90%;
+  margin: auto;
+}
+
+.cover_wrapper {
+  padding: 1rem 1.5rem;
+  padding-top: 130px;
+}
+
+.activeCoverProducts {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.activeCoverProducts img {
+  width: 100px;
+  height: 100px;
+}
+
+.activeCoverProducts_details {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.active_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  text-decoration: underline #fff;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.btn button {
+  width: 200px;
+  padding: .3rem .5rem;
+  margin: 1rem 0;
+  margin-right: .5rem;
+  color: var(--primary-font-color);
+  text-transform: capitalize;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.telemedicineSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 20px;
+}
+
+.telemedicineSuccess p {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 800;
+  text-align:center;
+}
+
+.telemedicineSuccess h5 {
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  color: rgb(134, 134, 133);
+}
+
+.link{
+  border-radius: 10px;
+  background-color: var(--primary-font-color);
+  color: #eff4f7;
+  font-size: 14px;
+  font-weight: 800;
+  font-family:calc(var(--primary-font), sans-serif);
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 4rem;
+    padding-top: 150px;
+  }
+
+  .wrapper h2 {
+    font-size: 28px;
+  }
+
+  .main {
+    width: 90%;
+  }
+
+  .activeCoverProducts {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .activeCoverProducts img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .activeCoverProducts_details {
+    margin-left: 1rem;
+    text-align: left;
+  }
+
+  .active_buttons {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .wrapper h2 {
+    font-size: 34px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .activeCoverProducts {
+    flex-basis: 45%;
+  }
+}

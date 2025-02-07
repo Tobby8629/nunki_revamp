@@ -38,10 +38,7 @@ const Telemedicine = () => {
   };
 
   const { mutate: handleSubmitMutation, isLoading: isSubmitting } =  useCustomMutation();
-
  
- 
-
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
       <section className={`${style.wrapper} msin_section`}>
