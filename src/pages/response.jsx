@@ -48,8 +48,15 @@ const Response = () => {
           <h2>Purchase Successful</h2>
           <h5>Thank you, {userName} for choosing Nunki Telemedicine!</h5>
           <p>
-            Your reference number is {ReferenceNumber}. Please click here to
-            create your account and start enjoying our service.
+            Your reference number is <strong>{ReferenceNumber}</strong>.{" "}
+          </p>
+          <p> Please keep this reference number safe</p>
+          <p>
+            Click here{" "}
+            <a className={product.link1} href="https://carefirst.co.za/nunki">
+              www.nunki/telemedicine.co.za
+            </a>{" "}
+            to make yor Digital medical ID to start using telemedicine
           </p>
           <Link
             to="https://carefirst.co.za/nunki"
