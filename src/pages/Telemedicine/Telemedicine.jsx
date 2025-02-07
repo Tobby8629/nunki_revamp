@@ -1,12 +1,13 @@
 import React, { createContext, useEffect, useState } from "react";
+import axios from "axios";
 import style from "./Tele.module.css";
 import { TelemedInputs } from "../../assets/data";
 import UseQuery from "../../api/query";
 import useCustomMutation from "../../api/Mutation";
 import Swal from "sweetalert2";
 import { InputSwitch } from "../../component/TeleMedicine/formQuestion/InputSwitch";
-import PaymentForm from "../../component/Payment/PaymentForm";
 export const FormContext = createContext();
+import PaymentForm from "../../component/Payment/PaymentForm";
 
 const Telemedicine = () => {
   const [tab, setTab] = useState(0);
@@ -62,7 +63,16 @@ const Telemedicine = () => {
     }
   };
 
-  const { mutate: handleSubmitMutation, isLoading: isSubmitting } =
+  const handleError = (message) => {
+    Swal.fire({
+      background: "yellow",
+      icon: "error",
+      title: "Oops...",
+      html: message,
+    });
+  };
+
+  const { mutateAsync: handleSubmitMutation, isLoading: isSubmitting } =
     useCustomMutation();
 
   const handleSubmit = async () => {
@@ -106,25 +116,22 @@ const Telemedicine = () => {
       // Use Mutation to submit telemedicine request
       const telemedicineResponse = await handleSubmitMutation({
         method: "POST",
-        endpoint: "telemedicine", // Update with your actual endpoint
+        endpoint: "telemedicine",
         params: telemedicine,
       });
 
-      if (telemedicineResponse && !telemedicineResponse.error) {
+      if (telemedicineResponse) {
         await dispatchNewCustomer();
         await dispatchNewQuote();
         await addAccountToCareFirst(telemedicine);
-        setShowPayment(true);
+        // setShowPayment(true);
       } else {
-        throw new Error("Error processing telemedicine request");
+        handleError("Error processing telemedicine request. Please try again.");
       }
     } catch (error) {
-      Swal.fire({
-        background: "yellow",
-        icon: "error",
-        title: "Oops...",
-        html: `An error occurred: ${error.message}`,
-      });
+      handleError(
+        `An error occurred: ${error.response?.data?.message || error.message}`
+      );
     } finally {
       setLoading(false);
     }
