@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-font-color: #1271B8; /* Adjust this color as needed */
+  --primary-font-color: #1271b8; /* Adjust this color as needed */
 }
 
 .wrapper {
@@ -63,9 +63,9 @@
 
 .btn button {
   width: 200px;
-  padding: .3rem .5rem;
+  padding: 0.3rem 0.5rem;
   margin: 1rem 0;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   color: var(--primary-font-color);
   text-transform: capitalize;
   font-size: 22px;
@@ -83,25 +83,41 @@
 
 .telemedicineSuccess p {
   width: 100%;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: rgb(46, 46, 46);
+}
+
+.telemedicineSuccess strong {
+  font-size: 18px;
   font-weight: 800;
-  text-align:center;
+  text-align: center;
+  color: var(--primary-font-color);
 }
 
 .telemedicineSuccess h5 {
   font-size: 20px;
   font-weight: 800;
   text-align: center;
-  color: rgb(134, 134, 133);
+  color: rgb(119, 119, 116);
 }
 
-.link{
+.link1 {
+  color: var(--primary-font-color);
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.link {
   border-radius: 10px;
   background-color: var(--primary-font-color);
   color: #eff4f7;
   font-size: 14px;
   font-weight: 800;
-  font-family:calc(var(--primary-font), sans-serif);
+  font-family: calc(var(--primary-font), sans-serif);
   padding: 10px;
   text-align: center;
   text-transform: uppercase;
