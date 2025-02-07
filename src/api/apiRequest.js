@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://nunkiapi-kkr1.onrender.com/api/v1/", 
+  baseURL: "https://nunkiapi-kkr1.onrender.com/api/v1/",
   headers: {
     "Content-Type": "application/json",
   },
@@ -15,7 +15,7 @@ const apiRequest = async (method, endpoint, data = null, params = null) => {
       data,
       params,
     });
-    return response.data;
+    return response?.data ?? response;
   } catch (error) {
     console.error("API Error:", error);
     throw error;
