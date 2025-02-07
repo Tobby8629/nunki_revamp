@@ -9,6 +9,8 @@ const ComingSoon = React.lazy(() =>
 );
 const Telemedicine = React.lazy(() => import("./Telemedicine/Telemedicine"));
 const Screen = React.lazy(() => import("./Screen"));
+const Result = React.lazy(() => import("./result"));
+const Response = React.lazy(() => import("./response"));
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -27,7 +29,6 @@ const Screen = React.lazy(() => import("./Screen"));
 // import DiscountFuneral from './DiscountFuneral'
 // import TraumaAsult from './TraumaAsult'
 // import Telemedicine from './Telemedicine/Telemedicine'
-// import Screen from './Screen'
 
 export const routes = [
   {
@@ -54,10 +55,15 @@ export const routes = [
     element: Difference,
   },
 
-  // {
-  //   route: "/result",
-  //   element: Result,
-  // },
+  {
+    route: "/result",
+    element: Result,
+  },
+
+  {
+    route: "/response",
+    element: Response,
+  },
 
   // {
   //   route: "/about",
