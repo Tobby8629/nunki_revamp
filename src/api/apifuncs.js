@@ -125,16 +125,22 @@ const addAccountToCareFirst = async (telemedicine, setShowPayment) => {
     }
   } catch (error) {
     console.error("Error adding account to CareFirst:", error);
-   Alert(
+    Alert(
       "yellow",
       "error",
       "Oops...",
-     `Account could not be added to CareFirst. Please try again later`,
+      `Account could not be added to CareFirst. Please try again later`
     );
   }
 };
 
-export const handleTelemedicine = async (form, values, accountReference,handleSubmitMutation,setShowPayment ) => {
+export const handleTelemedicine = async (
+  form,
+  values,
+  accountReference,
+  handleSubmitMutation,
+  setShowPayment
+) => {
   //makes sure no field is empty and required field are compulsory
   const requirefields = [
     "firstName",
@@ -148,11 +154,11 @@ export const handleTelemedicine = async (form, values, accountReference,handleSu
   ];
   const isEmpty = requirefields.some((field) => !form[field]);
   if (isEmpty) {
-    Alert(   
-    "error",
-    "Oops...",
-     `Please fill in all the following required fields`,
-      "yellow",
+    Alert(
+      "error",
+      "Oops...",
+      `Please fill in all the following required fields`,
+      "yellow"
     );
     return;
   }
@@ -171,7 +177,7 @@ export const handleTelemedicine = async (form, values, accountReference,handleSu
     product_name: "Tele Medicine",
   };
 
- //Consume the Telemedicine API for NUNKI
+  //Consume the Telemedicine API for NUNKI
   try {
     const telemedicineResponse = await handleSubmitMutation({
       method: "POST",
@@ -179,7 +185,7 @@ export const handleTelemedicine = async (form, values, accountReference,handleSu
       params: telemedicine,
     });
 
-    if (telemedicineResponse && !telemedicineResponse.error) {
+    if (telemedicineResponse) {
       await dispatchNewCustomer(form, handleSubmitMutation);
       await dispatchNewQuote(form, values, handleSubmitMutation);
       await addAccountToCareFirst(telemedicine, setShowPayment);
@@ -188,11 +194,6 @@ export const handleTelemedicine = async (form, values, accountReference,handleSu
       throw new Error("Error processing telemedicine request");
     }
   } catch (error) {
-    Alert(
-       "yellow",
-       "error",
-      "Oops...",
-      `An error occurred: ${error.message}`,
-    );
+    Alert("yellow", "error", "Oops...", `An error occurred: ${error.message}`);
   }
 };
