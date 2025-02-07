@@ -13,7 +13,7 @@ import { handleSubscribe } from '../../../api/apifuncs';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
-  const {data,} = UseQuery({query:'getEmails', method:'get', endpoint:'subscribers'})
+  const {data} = UseQuery({query:'getEmails', method:'get', endpoint:'subscribers'})
   const {mutate, isLoading: subLoading} = useCustomMutation()
   const queryClient = useQueryClient()
 

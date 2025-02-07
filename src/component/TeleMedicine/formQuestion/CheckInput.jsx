@@ -1,15 +1,16 @@
 import { useContext } from "react";
-import { FormContext } from "../../../pages/Telemedicine/Telemedicine";
 import Input from "../../inputs/TextInput/Input";
 import NumberLimit from "../../NumberLimit/NumberLimit";
 import Dropdown from "../../inputs/DropDown/Dropdown";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import style from "../../inputs/TextInput/input.module.css";
+import { FormContext } from "../../../pages/Telemedicine/createContext";
+import PropTypes from "prop-types";
 
-const CheckInput = (e, extra = {}) => {
+const CheckInput = ({ e, extra}) => {
   const { form, setform } = useContext(FormContext);
-  console.log(extra.other);
+  console.log(extra);
   switch (e?.type) {
     case "textInput":
       return (
@@ -70,5 +71,10 @@ const CheckInput = (e, extra = {}) => {
       );
   }
 };
+
+CheckInput.propTypes = {
+  e: PropTypes.object.isRequired,
+  extra: PropTypes.object
+}
 
 export default CheckInput;

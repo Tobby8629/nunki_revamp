@@ -124,3 +124,4 @@ export  const Alert = (icon, title, text,background) => {
     showConfirmButton: true,
     });
 }
+

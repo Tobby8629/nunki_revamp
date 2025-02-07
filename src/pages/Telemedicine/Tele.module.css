@@ -261,7 +261,7 @@
   .wrapper {
     padding: 2rem 1rem;
     padding-top: 125px;
-    min-height: calc(95vh - 125px);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

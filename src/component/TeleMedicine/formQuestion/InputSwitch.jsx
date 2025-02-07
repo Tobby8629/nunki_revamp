@@ -1,48 +1,48 @@
 import React, { useContext } from "react";
-import { FormContext } from "../../../pages/Telemedicine/Telemedicine";
 import CheckInput from "./CheckInput";
 import style from "../../../pages/Telemedicine/Tele.module.css";
-// import OTP from "../../inputs/OTP/OTP";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { FormContext } from "../../../pages/Telemedicine/createContext";
 
-export const InputSwitch = ({ page }) => {
+export const InputSwitch = ({page}) => {
   const { fields, form, setform } = useContext(FormContext);
+  console.log(fields)
 
   switch (page) {
     case "name":
       return (
         <div className={style.nameWrapper}>
           {fields.map((e) => (
-            <React.Fragment key={e.id}>
-              {CheckInput(e, { width: "48%", className: "input" })}
-            </React.Fragment>
+            <CheckInput e={e} extra={{ width: "48%", className: "input"}} key={e.headline}/>
           ))}
         </div>
       );
     case "identification":
       return (
         <div className={style.nameWrapper}>
-          {fields.map((e) => (
+          {fields.map((e, index) => (
             <React.Fragment key={e.id || e.name || index}>
               {e.name === "email_Address"
-                ? CheckInput(e, {
+                ? <CheckInput e={e} extra={{
                     inputStyle: style.full,
                     className: "input",
                     type: "email",
-                  })
+                  }} />
                 : e.name === "id_type"
-                ? CheckInput(e, {
+                ? <CheckInput e={e} extra={{
                     width: "48%",
                     inputWrapper: style.idType,
                     className: "input",
-                  })
-                : CheckInput(e, {
+                }} />
+                : <CheckInput e={e} extra={{
                     width: "48%",
                     className: "input",
                     other: fields[0]?.options?.find(
                       (ex) => ex.value == form.id_type
                     )?.name,
-                  })}
+                  }} />
+                }
             </React.Fragment>
           ))}
         </div>
@@ -53,7 +53,7 @@ export const InputSwitch = ({ page }) => {
     //       {fields.map((e) => (
     //         <React.Fragment key={e.id || e.name || index}>
     //           {e.name === "gender" ?
-    //           CheckInput(e, {inputWrapper: style.half, className:"input"}) :
+    //           <CheckInput{e, {inputWrapper: style.half, className:"input"}) :
     //           CheckInput(e,{width: "48%", className:"input"})}
     //         </React.Fragment>
     //       ))}
@@ -99,7 +99,7 @@ export const InputSwitch = ({ page }) => {
               <span
                 className={`${style.check} ${form.terms ? style.active : ""}`}
               ></span>
-              I agree to the Nunk's T&Cs.
+              I agree to the Nunki `&apos;`s T&Cs.
             </label>
             <label className={style.checkbox}>
               <input
@@ -122,9 +122,17 @@ export const InputSwitch = ({ page }) => {
         </div>
       );
 
-    default:
+    default: return(
       <div>
         <p>Thank you</p>
-      </div>;
+      </div>
+    )
   }
+  
 };
+
+InputSwitch.propTypes = {
+  page: PropTypes.string
+};
+
+
