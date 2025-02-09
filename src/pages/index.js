@@ -1,6 +1,4 @@
 import React from "react";
-
-// import Shack from './Shack'
 const Home = React.lazy(() => import("./Home"));
 const Blog = React.lazy(() => import("./Blog/Blog"));
 const Difference = React.lazy(() => import("./Diffference/Difference"));
@@ -11,6 +9,7 @@ const Telemedicine = React.lazy(() => import("./Telemedicine/Telemedicine"));
 const Screen = React.lazy(() => import("./Screen"));
 const Result = React.lazy(() => import("./result"));
 const Response = React.lazy(() => import("./response"));
+const ContactUs = React.lazy(() => import("./ContactUs"));
 // import GetPrices from './GetPrices/GetPrices'
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
@@ -18,7 +17,6 @@ const Response = React.lazy(() => import("./response"));
 // import Difference from './Difference'
 // import Result from './result'
 // import AboutUs from './AboutUs'
-// import ContactUs from './ContactUs'
 // import FAQ from './FAQ'
 // import BlogContent from './BlogContent'
 // import MedicalAdvice from './MedicalAdvice'
@@ -70,10 +68,10 @@ export const routes = [
   //   element: AboutUs,
   // },
 
-  // {
-  //   route: "/contact",
-  //   element: ContactUs,
-  // },
+  {
+    route: "/contact",
+    element: ContactUs,
+  },
 
   // {
   //   route: "/faqs",
