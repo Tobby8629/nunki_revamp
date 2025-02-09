@@ -197,3 +197,38 @@ export const handleTelemedicine = async (
     Alert("yellow", "error", "Oops...", `An error occurred: ${error.message}`);
   }
 };
+
+export const handleFeedback = async (feedback, handleSubmitMutation) => {
+  const addFeedback = {
+    first_name: feedback.first_name,
+    last_name: feedback.last_name,
+    phone_number: feedback.phone_number,
+    message: feedback.message,
+  };
+
+  try {
+    await handleSubmitMutation({
+      method: "POST",
+      endpoint: "feedbacks",
+      params: addFeedback,
+    });
+  } catch (error) {
+    Alert("yellow", "error", "Oops...", `An error occurred: ${error.message}`);
+  }
+};
+
+export const handlecallRequest = async (callRequest, handleSubmitMutation) => {
+  const call = {
+    first_name: callRequest.first_name,
+    phone_number: callRequest.phone_number,
+  };
+  try {
+    await handleSubmitMutation({
+      method: "POST",
+      endpoint: "requestcall",
+      params: call,
+    });
+  } catch (error) {
+    Alert("yellow", "error", "Oops...", `An error occurred: ${error.message}`);
+  }
+};
