@@ -10,7 +10,7 @@ const Screen = React.lazy(() => import("./Screen"));
 const Result = React.lazy(() => import("./result"));
 const Response = React.lazy(() => import("./response"));
 const ContactUs = React.lazy(() => import("./ContactUs"));
-// import GetPrices from './GetPrices/GetPrices'
+const GetPrices = React.lazy(() => import("./GetPrices/GetPrices"));
 // import Funeral from './Funeral'
 // import Tutor from './Tutor'
 // import Blog from './Blog'
@@ -38,10 +38,10 @@ export const routes = [
     route: "/blogs",
     element: Blog,
   },
-  // {
-  //   route: "/prices",
-  //   element: GetPrices,
-  // },
+  {
+    route: "/prices",
+    element: GetPrices,
+  },
 
   // {
   //   route: "/blogs",
