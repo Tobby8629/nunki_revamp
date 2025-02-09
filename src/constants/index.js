@@ -1,40 +1,59 @@
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
-import { faTelegramPlane } from '@fortawesome/free-brands-svg-icons'
-import Swal from 'sweetalert2';
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faTelegramPlane } from "@fortawesome/free-brands-svg-icons";
+import Swal from "sweetalert2";
 
 export const menu = [
-    { name: 'Home', link: '/', mobileOnly: true },
-    {
-      name: 'products pricing', link: '', otherlink: [
-        { name: 'Funeral Cover', link: '/products/funeral/insure' },
-        { name: 'Teacher online', link: '/products/teacher_online' },
-        { name: 'Shack Insurance', link: '/products/shack' },
-        { name: 'Medical Advice', link: '/products/medical_advice' },
-        { name: 'Repatriation of Mortal Remains', link: '/products/mortal_remains' },
-      ], show: false,
-    },
-    { name: 'difference we make', link: '/differences', otherlink: [] },
-    { name: 'T&Cs', link: '/terms', otherlink: [] },
-    { name: 'Blogs', link: '/blogs', otherlink: [] },
-    { name: 'Contact Us', link: '', otherlink: [
-      { name: 'info@nunki.africa', link: 'mailto:info@nunki.africa', icon: faEnvelope },
-      { name: '021 701 0874', link: 'tel:+27217010874', icon: faPhone },
-      { name: 'Message Us', link: '/contact', icon: faTelegramPlane },
-    ] },
- ]
+  { name: "Home", link: "/", mobileOnly: true },
+  {
+    name: "products pricing",
+    link: "",
+    otherlink: [
+      { name: "Funeral Cover", link: "/products/funeral/insure" },
+      { name: "Teacher online", link: "/products/teacher_online/insure" },
+      { name: "Shack Insurance", link: "/products/shack/insure" },
+      { name: "Medical Advice", link: "/products/medical_advice/insure" },
+      {
+        name: "Repatriation of Mortal Remains",
+        link: "/products/mortal_remains/insure",
+      },
+    ],
+    show: false,
+  },
+  { name: "difference we make", link: "/differences", otherlink: [] },
+  { name: "T&Cs", link: "/terms", otherlink: [] },
+  { name: "Blogs", link: "/blogs", otherlink: [] },
+  {
+    name: "Contact Us",
+    link: "",
+    otherlink: [
+      {
+        name: "info@nunki.africa",
+        link: "mailto:info@nunki.africa",
+        icon: faEnvelope,
+      },
+      { name: "021 701 0874", link: "tel:+27217010874", icon: faPhone },
+      { name: "Message Us", link: "/contact", icon: faTelegramPlane },
+    ],
+  },
+];
 
- export const productLinks = [
-  { name: 'Funeral Cover', link: '/products/funeral/insure' },
-  { name: 'Teacher online', link: '/products/teacher_online' },
-  { name: 'Shack Insurance', link: '/products/shack' },
-  { name: 'medical advice', link: '/products/medical_advice' },
-  { name: 'repatriation of mortal remains', link: '/products/mortal_remains' },
-  { name: 'Merchant Insurance', link: '/products/merchant' },
-  { name: 'Emergency Medical Response', link: '/products/emergencymedicalresponse' },
-  {name: 'Trauma Counselling', link: '/products/trauma_counselling'},
-  {name: 'Trauma, Assualt and HIV', link: '/products/clinic'},
-  {name: 'Discount Funeral', link: '/products/discount_funeral'},
-  
+export const productLinks = [
+  { name: "Funeral Cover", link: "/products/funeral/insure" },
+  { name: "Teacher online", link: "/products/teacher_online/insure" },
+  { name: "Shack Insurance", link: "/products/shack/insure" },
+  { name: "medical advice", link: "/products/medical_advice/insure" },
+  {
+    name: "repatriation of mortal remains",
+    link: "/products/mortal_remains/insure",
+  },
+  { name: "Merchant Insurance", link: "/products/merchant" },
+  {
+    name: "Emergency Medical Response",
+    link: "/products/emergencymedicalresponse",
+  },
+  { name: "Trauma Counselling", link: "/products/trauma_counselling" },
+  { name: "Trauma, Assualt and HIV", link: "/products/clinic" },
+  { name: "Discount Funeral", link: "/products/discount_funeral" },
 ];
 
 export const blog_points = [
@@ -95,25 +114,37 @@ export const blog_points = [
 ];
 
 export const footerLinks = [
-  {header: "products", links: [
-    {name:'Funeral Cover', link:'/products/funeral/insure'}, 
-    {name:'Teacher Online', link:'products/teacher_online/insure'},
-    {name:'Shack Insurance', link:'/products/shack/insure'},
-    {name:'Medical Advice', link:'/products/medical_advice'},
-    {name:'Emergency Medical Response', link:'/products/emergencymedicalresponse'}
-  ]},
-  {header: "company", links: [
-    {name:'About us', link:'/about'}, 
-    {name:'Blogs', link:'/blogs'},
-    {name:'Nunki difference', link:'/differences'},
-  ]},
-  {header: "Help", links: [
-    {name:'FAQs', link:'/faqs'},
-    {name:'Contact Us', link:'/contact'},
-  ]},
+  {
+    header: "products",
+    links: [
+      { name: "Funeral Cover", link: "/products/funeral/insure" },
+      { name: "Teacher Online", link: "products/teacher_online/insure" },
+      { name: "Shack Insurance", link: "/products/shack/insure" },
+      { name: "Medical Advice", link: "/products/medical_advice/insure" },
+      {
+        name: "Emergency Medical Response",
+        link: "/products/emergencymedicalresponse/insure",
+      },
+    ],
+  },
+  {
+    header: "company",
+    links: [
+      { name: "About us", link: "/about" },
+      { name: "Blogs", link: "/blogs" },
+      { name: "Nunki difference", link: "/differences" },
+    ],
+  },
+  {
+    header: "Help",
+    links: [
+      { name: "FAQs", link: "/faqs" },
+      { name: "Contact Us", link: "/contact" },
+    ],
+  },
 ];
 
-export  const Alert = (icon, title, text,background) => {
+export const Alert = (icon, title, text, background) => {
   Swal.fire({
     background: background,
     width: 300,
@@ -122,6 +153,5 @@ export  const Alert = (icon, title, text,background) => {
     title: title,
     text: text,
     showConfirmButton: true,
-    });
-}
-
+  });
+};
