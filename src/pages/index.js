@@ -1,3 +1,4 @@
+import { element } from "prop-types";
 import React from "react";
 const Home = React.lazy(() => import("./Home"));
 const Blog = React.lazy(() => import("./Blog/Blog"));
@@ -11,22 +12,8 @@ const Result = React.lazy(() => import("./result"));
 const Response = React.lazy(() => import("./response"));
 const ContactUs = React.lazy(() => import("./ContactUs"));
 const GetPrices = React.lazy(() => import("./GetPrices/GetPrices"));
-// import Funeral from './Funeral'
-// import Tutor from './Tutor'
-// import Blog from './Blog'
-// import Difference from './Difference'
-// import Result from './result'
-// import AboutUs from './AboutUs'
-// import FAQ from './FAQ'
-// import BlogContent from './BlogContent'
-// import MedicalAdvice from './MedicalAdvice'
-// import Reapatration from './repatration'
-// import Merchant from './merchant'
-// import EmergencyMedicalResponse from './EmergencyMedicalResponse'
-// import TraumaCounselling from './TraumaCounselling'
-// import DiscountFuneral from './DiscountFuneral'
-// import TraumaAsult from './TraumaAsult'
-// import Telemedicine from './Telemedicine/Telemedicine'
+const AboutUs = React.lazy(() => import("./AboutUs"));
+const FAQ = React.lazy(() => import("./FAQ"));
 
 export const routes = [
   {
@@ -43,11 +30,6 @@ export const routes = [
     element: GetPrices,
   },
 
-  // {
-  //   route: "/blogs",
-  //   element: Blog,
-  // },
-
   {
     route: "/differences",
     element: Difference,
@@ -63,20 +45,25 @@ export const routes = [
     element: Response,
   },
 
-  // {
-  //   route: "/about",
-  //   element: AboutUs,
-  // },
+  {
+    route: "/about",
+    element: AboutUs,
+  },
 
   {
     route: "/contact",
     element: ContactUs,
   },
 
-  // {
-  //   route: "/faqs",
-  //   element: FAQ,
-  // },
+  {
+    route: "/faqs",
+    element: FAQ,
+  },
+
+  {
+    route: "/terms",
+    element: ComingSoon,
+  },
 
   // {
   //   route: "/blogs/:name",
@@ -113,10 +100,10 @@ export const routes = [
     element: ComingSoon,
   },
 
-  // {
-  //   route: "/products/emergencymedicalresponse/insure",
-  //   element: EmergencyMedicalResponse,
-  // },
+  {
+    route: "/products/emergencymedicalresponse/insure",
+    element: ComingSoon,
+  },
 
   // {
   //   route: "/products/trauma_counselling/insure",
