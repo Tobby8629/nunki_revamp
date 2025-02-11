@@ -63,7 +63,7 @@ const Response = () => {
             target="_blank"
             className={product.link}
           >
-            <h3> Create an Account </h3>
+            <h3> Set up Medical ID </h3>
           </Link>
         </div>
       </main>
