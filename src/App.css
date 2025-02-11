@@ -48,16 +48,16 @@ body {
   color: var(--primary-font-color);
 }
 
-.wrapper {
-  padding-top: 125px;
+.main_section_wrapper {
+  padding-top: 130px;
   overflow: hidden;
+  padding-bottom: 2rem;
 }
 
 .main_section {
   max-width: 1350px;
   margin: 0 auto;
-  padding: 1rem;
-  /* text-align: center; */
+  padding: 0 1rem;
 }
 
 a {
@@ -200,12 +200,25 @@ li {
   .chatbot {
     width: 40%;
   }
+
+  .main_section_wrapper {
+    padding-bottom: 3rem;
+  }
+
+  .main_section {
+    padding: 0 1.3rem;
+  }
 }
 
 @media (min-width:1024px) {
+  .main_section_wrapper {
+    padding-top: 180px;
+    padding-bottom: 3.5rem;
+    overflow: hidden;
+  }
 
   .main_section {
-    padding: 2rem;
+    padding: 0 2rem;
   }
 
   .chatopen {

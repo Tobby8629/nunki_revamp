@@ -1,4 +1,5 @@
 import { blogs } from '../../assets/data'
+import PageWrapper from '../../component/Layout/pageWrapper/PageWrapper'
 import blogStyle from './Blog.module.css'
 import { Link } from 'react-router-dom'
 const Brief = () => {
@@ -6,8 +7,7 @@ const Brief = () => {
   const bloog = blogs?.slice(1)
 
   return (
-    <div className='wrapper'>
-      <main className='main_section'>
+     <PageWrapper>
         <section className={blogStyle.header}>
           <div className={blogStyle.header_img}>
             <img src={poster?.img} alt={poster?.name}/>
@@ -37,9 +37,7 @@ const Brief = () => {
           </div> 
           ))}
         </section>
-      </main>
-    </div>
-    
+      </PageWrapper>
   )
 }
 

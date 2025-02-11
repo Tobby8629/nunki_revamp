@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { logo } from '../../../../public/images/Nunki/nunkiImages';
-import UseQuery from '../../../api/query';
 import useCustomMutation from '../../../api/Mutation';
 import { useQueryClient } from '@tanstack/react-query';
 import { footerLinks } from '../../../constants';
 import { handleSubscribe } from '../../../api/apifuncs';
+import UseQuery from '../../../api/Query';
 
 const Footer = () => {
   const [email, setEmail] = useState('');

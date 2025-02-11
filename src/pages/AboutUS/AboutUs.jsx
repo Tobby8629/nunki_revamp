@@ -1,9 +1,9 @@
-import React from 'react';
-import template from '../component/products/template.module.css';
+import PageWrapper from "../../component/Layout/pageWrapper/PageWrapper";
+import template from "./AboutUs.module.css";
 
 const AboutUs = () => {
   return (
-    <section className={template.section}>
+    <PageWrapper>
       <div className={template.headerwrapper}>
         <h2 className={template.headerText}>About Nunki Africa</h2>
       </div>
@@ -30,7 +30,7 @@ const AboutUs = () => {
               <strong>FinTech Insurance</strong> and{' '}
               <strong>Value-Added Products</strong>, we illuminate opportunities
               in informal areas, bringing the promise of security and growth
-              where it's needed most.
+              where it&apos;s needed most.
             </p>
           </div>
           <div className={template.aboutUsText}>
@@ -85,7 +85,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </section>
+    </PageWrapper>
   );
 };
 

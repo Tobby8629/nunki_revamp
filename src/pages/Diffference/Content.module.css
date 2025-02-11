@@ -1,9 +1,4 @@
-.wrapper {
-  padding: 1rem;
-  padding-bottom: 2rem;
-}
-
-.wrapper h2 {
+.difference h2 {
   font-size: 18px;
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -31,7 +26,7 @@
 }
 
 @media (min-width: 768px) {
-  .wrapper h2 {
+  .difference h2 {
     font-size: 29px;
     font-weight: 800;
   }
@@ -86,7 +81,7 @@
 }
 
 @media (min-width: 1280px) {
-  .wrapper h2 {
+  .difference h2 {
     margin-bottom: 3rem;
   }
 

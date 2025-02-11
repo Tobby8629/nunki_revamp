@@ -11,8 +11,6 @@ const UseQuery = ({query,method,endpoint,params }) => {
      ),
      enabled: true
   })
-
-
     
   return {
     data,

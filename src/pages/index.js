@@ -1,4 +1,3 @@
-import { element } from "prop-types";
 import React from "react";
 const Home = React.lazy(() => import("./Home"));
 const Blog = React.lazy(() => import("./Blog/Blog"));
@@ -12,7 +11,7 @@ const Result = React.lazy(() => import("./result"));
 const Response = React.lazy(() => import("./response"));
 const ContactUs = React.lazy(() => import("./ContactUs"));
 const GetPrices = React.lazy(() => import("./GetPrices/GetPrices"));
-const AboutUs = React.lazy(() => import("./AboutUs"));
+const AboutUs = React.lazy(() => import("./AboutUS/AboutUs"));
 const FAQ = React.lazy(() => import("./FAQ"));
 
 export const routes = [
