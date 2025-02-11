@@ -25,6 +25,7 @@ const PaymentForm = ({ values }) => {
       "standingInstruction.type": "UNSCHEDULED",
       "standingInstruction.source": "CIT",
       createRegistration: "true",
+      integrity: "true",
       merchantTransactionId: `INV-${values.id}`,
     };
 
@@ -56,6 +57,8 @@ const PaymentForm = ({ values }) => {
         import.meta.env.VITE_PAYMENT_WIDGET_URL
       }?checkoutId=${checkoutId}`;
       script.async = true;
+      script.integrity = "{ integrity }";
+      script.crossorigin = "anonymous";
       const formContainer = document.getElementById("payment-form-container");
       formContainer.appendChild(script);
     }
