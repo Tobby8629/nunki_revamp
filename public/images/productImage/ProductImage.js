@@ -10,6 +10,8 @@ import support from './support.svg'
 import cash from './cash.svg'
 import chat from './chat.svg'
 import telemed from './telemed.svg'
+import create from './create.jpg'
+import success from './success.jpg'
 
 export {
   medical,
@@ -23,5 +25,7 @@ export {
   cash,
   chat,
   support,
-  funeral
+  funeral,
+  create,
+  success
 }

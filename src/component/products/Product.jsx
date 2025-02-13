@@ -38,17 +38,21 @@ const Product = ({product}) => {
           <div className={style.benefits}>
             <h2>Service Benefits</h2>
             <ul>
-              {product?.benefits?.map((benefit)=>(
+              {product?.benefits?.map((benefit, index)=>(
                 <li key={benefit?.id}>
                   {benefit?.table_head ? 
                     <BenefitTable benefit={benefit}/>: 
                     <>
                       <span className={style.check}>
-                        <img src={mark} alt={benefit?.benefit}/>
+                       {index+1}
                       </span>  
                       <span className={style.benefit}>
                         {benefit?.benefit}
+                        <div className={style.benefitImage}>
+                          {benefit?.img && <img src={benefit?.img} alt="image" />}
+                      </div>
                       </span>
+                      
                     </>
                   }
                 </li>
