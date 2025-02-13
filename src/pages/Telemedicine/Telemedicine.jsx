@@ -7,6 +7,7 @@ import PaymentForm from "../../component/Payment/PaymentForm";
 import { currentPage, switchTab } from "../../constants/funcs";
 import { handleTelemedicine } from "../../api/apifuncs";
 import { FormContext } from "./createContext";
+import PageWrapper from "../../component/Layout/pageWrapper/PageWrapper";
 
 const Telemedicine = () => {
   const [tab, setTab] = useState(0);
@@ -27,6 +28,7 @@ const Telemedicine = () => {
   const generateAccountReference = () => {
     return Math.random().toString(36).substring(2, 10).toUpperCase();
   };
+
   const accountReference = generateAccountReference();
   const values = {
     cover_price: 30,
@@ -59,8 +61,7 @@ const Telemedicine = () => {
 
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
-      <section className={`${style.wrapper} msin_section`}>
-        <div>
+      <PageWrapper>
           {showPayment ? (
             <PaymentForm values={values} />
           ) : (
@@ -108,8 +109,7 @@ const Telemedicine = () => {
               </div>
             </>
           )}
-        </div>
-      </section>
+      </PageWrapper>
     </FormContext.Provider>
   );
 };

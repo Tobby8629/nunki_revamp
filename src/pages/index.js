@@ -34,7 +34,7 @@ export const routes = [
     element: Difference,
   },
 
-  {
+  {v
     route: "/result",
     element: Result,
   },
