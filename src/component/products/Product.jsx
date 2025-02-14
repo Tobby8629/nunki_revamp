@@ -1,20 +1,9 @@
-import { useCallback, useState } from 'react'
 import style from './product.module.css'
 import ProductBox from '../Home/InnovatingPrice\'/ProductBox'
-// import FuneralTables from './FuneralTables'
-import { useMobileView } from '../utils/useMobile'
-import { mark } from '../../../public/images/productImage/ProductImage'
+import PropTypes from 'prop-types'
 
 
-const Product = ({product}) => {
-  const [select, setselect] = useState('A')
-  const mobile = useMobileView()
-  
-  const changeselect = useCallback((e) => {
-    const {value} = e.target
-    setselect((prev)=> prev === value ? null : value)
-  },[select])
-
+const Product = ({product, benefitHeader}) => {
   return (
     <main className={style.main}>
       <div className={style.top}>
@@ -36,7 +25,7 @@ const Product = ({product}) => {
         <div className={style.benefi}>
         
           <div className={style.benefits}>
-            <h2>Service Benefits</h2>
+            <h2>{benefitHeader ? benefitHeader : "Service Benefits"}</h2>
             <ul>
               {product?.benefits?.map((benefit, index)=>(
                 <li key={benefit?.id}>
@@ -82,6 +71,11 @@ const Product = ({product}) => {
   )
 }
 
+Product.propTypes = {
+  benefitHeader: PropTypes.string,
+  product: PropTypes.object
+}
+
 export default Product
 
 
@@ -110,3 +104,15 @@ export const BenefitTable = ({benefit}) => {
     </div>
    )
 }
+ BenefitTable.propTypes = {
+  benefit: PropTypes.object
+ }
+
+
+//  const [select, setselect] = useState('A')
+//   const mobile = useMobileView()
+  
+//   const changeselect = useCallback((e) => {
+//     const {value} = e.target
+//     setselect((prev)=> prev === value ? null : value)
+//   },[select])

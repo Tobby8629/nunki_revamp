@@ -1,9 +1,9 @@
 import PropTypes from "prop-types"
 
-const PageWrapper = ({children, className}) => {
+const PageWrapper = ({children, className, style, mainStyle}) => {
   return (
-    <section className={`main_section_wrapper ${className}`}>
-      <main className="main_section">
+    <section className={`main_section_wrapper ${className}`} style={style}>
+      <main className="main_section" style={mainStyle}>
         {children}
       </main>
     </section>
@@ -12,7 +12,9 @@ const PageWrapper = ({children, className}) => {
 
 PageWrapper.propTypes = {
     children: PropTypes.node.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    style: PropTypes.string,
+    mainStyle: PropTypes.string
 }
 
 export default PageWrapper

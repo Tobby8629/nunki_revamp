@@ -61,54 +61,57 @@ const Telemedicine = () => {
 
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
-      <PageWrapper>
+      <PageWrapper style={{padding: 0}} mainStyle={{padding: 0}}>
+        <div className={style.wrapper}>
           {showPayment ? (
-            <PaymentForm values={values} />
-          ) : (
-            <>
-              {tab === pages.length - 1 ? (
-                <div className={style.top_tc}>
-                  <h2>T&Cs</h2>
-                </div>
-              ) : (
-                <div className={style.top}>
-                  <h2>Purchase Telemedicine</h2>
-                </div>
-              )}
-
-              <div className={style.down}>
-                <div>
-                  <InputSwitch page={pages[tab]} />
-                </div>
-                {errorMessages.length > 0 && (
-                  <div className={style.errorMessages}>
-                    {errorMessages.map((msg, index) => (
-                      <div key={index} className={style.errorMessage}>
-                        {msg}
-                      </div>
-                    ))}
+              <PaymentForm values={values} />
+            ) : (
+              <>
+                {tab === pages.length - 1 ? (
+                  <div className={style.top_tc}>
+                    <h2>T&Cs</h2>
+                  </div>
+                ) : (
+                  <div className={style.top}>
+                    <h2>Purchase Telemedicine</h2>
                   </div>
                 )}
 
-                <button
-                  onClick={() => {
-                    switchTab(
-                      TelemedInputs,
-                      tab,
-                      pages,
-                      form,
-                      setErrorMessages,
-                      setTab,
-                      handleSubmit // Call the new handleSubmit function
-                    );
-                  }}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Activating..." : "Continue"}
-                </button>
-              </div>
-            </>
-          )}
+                <div className={style.down}>
+                  <div>
+                    <InputSwitch page={pages[tab]} />
+                  </div>
+                  {errorMessages.length > 0 && (
+                    <div className={style.errorMessages}>
+                      {errorMessages.map((msg, index) => (
+                        <div key={index} className={style.errorMessage}>
+                          {msg}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <button
+                    onClick={() => {
+                      switchTab(
+                        TelemedInputs,
+                        tab,
+                        pages,
+                        form,
+                        setErrorMessages,
+                        setTab,
+                        handleSubmit // Call the new handleSubmit function
+                      );
+                    }}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Activating..." : "Continue"}
+                  </button>
+                </div>
+              </>
+            )}
+        </div>
+          
       </PageWrapper>
     </FormContext.Provider>
   );

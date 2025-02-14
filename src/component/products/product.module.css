@@ -123,7 +123,10 @@
   width: calc(100% - 21px);
 }
 
-.benefit
+.benefits h2 {
+  text-align: left;
+  font-size: 20px;
+}
 
 .header h2 {
   display: none;

@@ -1,4 +1,3 @@
-import React from "react";
 import { products } from "../assets/data";
 import Product from "../component/products/Product";
 import style from "./Telemedicine/Tele.module.css";
@@ -15,27 +14,32 @@ const Screen = () => {
   return (
     <div className={style.screen}>
       <div className="desktop">
-        <Product product={product} />
+        <Product product={product} benefitHeader={product.benefit_header}/>
         <div className={style.loadmore}>
           <button onClick={redirect}>Continue</button>
         </div>
       </div>
       <div className={`${style.wrap} mobile`}>
         <h2>TELE MEDICINE</h2>
-        <h4>What you get for R30?</h4>
-        <p>
+        <h4>How to get Telemedicine</h4>
+        {/* <p>
           The Nunki Virtual Healthcare Membership is a subscription-based
           service that provides access to a team of healthcare professionals.
-        </p>
+        </p> */}
 
         <ul className={style.benefits}>
-          {product?.benefits?.map((benefit) => (
+          {product?.benefits?.map((benefit, index) => (
             <li key={benefit?.id}>
               <>
                 <span className={productstyle.check}>
-                  <img src={mark} alt={benefit?.benefit} />
+                  {index+1}
                 </span>
-                <span className={productstyle.benefit}>{benefit?.benefit}</span>
+                <span className={productstyle.benefit}>
+                  {benefit?.benefit}
+                  <div className={productstyle.benefitImage}>
+                    {benefit?.img && <img src={benefit?.img} alt="image" />}
+                  </div>  
+                </span>
               </>
             </li>
           ))}

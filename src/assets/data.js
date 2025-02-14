@@ -149,7 +149,7 @@ export const products = [
     lightImage: light?.telemed,
     darkImage: Dark.telemed,
     route: "/products/tele_medicine/insure_",
-    link: "/products/tele_medicine",
+    link: "/products/tele_medicine/x",
     value: "Tele Medicine",
     sub_name: "professional support just a call away",
     phone_number: "0861 113 527",

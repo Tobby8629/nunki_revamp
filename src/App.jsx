@@ -29,7 +29,7 @@ function App() {
             <Route path={route?.route} element={route?.element ? <route.element /> : <ComingSoon />} key={route?.route} />
           ))}
           {products.map((product) => (
-            <Route key={product?.id} path={product?.link} element={product?.unavailable ? <ComingSoon /> : <Product product={product} />} />
+            <Route key={product?.id} path={product?.link} element={product?.unavailable ? <ComingSoon /> : <Product product={product} benefitHeader={product.benefit_header}/>} />
           ))}
         </Routes>
       </Suspense>
