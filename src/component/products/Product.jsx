@@ -3,7 +3,7 @@ import ProductBox from '../Home/InnovatingPrice\'/ProductBox'
 import PropTypes from 'prop-types'
 
 
-const Product = ({product, benefitHeader}) => {
+const Product = ({product}) => {
   return (
     <main className={style.main}>
       <div className={style.top}>
@@ -25,7 +25,7 @@ const Product = ({product, benefitHeader}) => {
         <div className={style.benefi}>
         
           <div className={style.benefits}>
-            <h2>{benefitHeader ? benefitHeader : "Service Benefits"}</h2>
+            <h2>Service Benefits</h2>
             <ul>
               {product?.benefits?.map((benefit, index)=>(
                 <li key={benefit?.id}>
@@ -72,7 +72,6 @@ const Product = ({product, benefitHeader}) => {
 }
 
 Product.propTypes = {
-  benefitHeader: PropTypes.string,
   product: PropTypes.object
 }
 

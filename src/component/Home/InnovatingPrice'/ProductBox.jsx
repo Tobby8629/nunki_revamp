@@ -36,7 +36,7 @@ const ProductBox = ({price, styles, tab, min_desk, desktop, color, dark}) => {
         </div>
         <div className={style.button}>
           <button>
-          <Link to={price?.route} 
+          <Link to={price?.redirect ||price?.route} 
             onClick={() => (price?.value)}
             target={check ? "_blank" : null} 
             rel={check ? "noopener noreferrer" : null} 

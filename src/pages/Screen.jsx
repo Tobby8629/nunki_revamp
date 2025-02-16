@@ -3,7 +3,7 @@ import Product from "../component/products/Product";
 import style from "./Telemedicine/Tele.module.css";
 import productstyle from "../component/products/product.module.css";
 import { useNavigate } from "react-router-dom";
-import { mark } from "../assets/productImage/ProductImage";
+import { telemedSteps } from "../constants";
 
 const Screen = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const Screen = () => {
         </p> */}
 
         <ul className={style.benefits}>
-          {product?.benefits?.map((benefit, index) => (
+          {telemedSteps?.benefits?.map((benefit, index) => (
             <li key={benefit?.id}>
               <>
                 <span className={productstyle.check}>
