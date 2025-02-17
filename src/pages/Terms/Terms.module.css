@@ -1,0 +1,17 @@
+.terms p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.terms ol {
+  padding: 0.5rem;
+  margin-left: 2.5rem;
+}
+
+.terms ol li {
+  font-size: 1.2rem;
+  list-style: decimal;
+  margin-bottom: 0.5rem;
+}
