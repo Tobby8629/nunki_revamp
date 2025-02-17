@@ -13,6 +13,7 @@ const ContactUs = React.lazy(() => import("./ContactUs"));
 const GetPrices = React.lazy(() => import("./GetPrices/GetPrices"));
 const AboutUs = React.lazy(() => import("./AboutUS/AboutUs"));
 const FAQ = React.lazy(() => import("./FAQ"));
+const Terms = React.lazy(() => import("./Terms/Terms"));
 
 export const routes = [
   {
@@ -61,7 +62,7 @@ export const routes = [
 
   {
     route: "/terms",
-    element: ComingSoon,
+    element: Terms,
   },
 
   // {
