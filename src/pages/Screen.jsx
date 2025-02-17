@@ -1,25 +1,26 @@
-import { products } from "../assets/data";
-import Product from "../component/products/Product";
+// import { products } from "../assets/data";
+// import Product from "../component/products/Product";
 import style from "./Telemedicine/Tele.module.css";
 import productstyle from "../component/products/product.module.css";
 import { useNavigate } from "react-router-dom";
 import { telemedSteps } from "../constants";
+import PageWrapper from "../component/Layout/pageWrapper/PageWrapper";
 
 const Screen = () => {
   const navigate = useNavigate();
-  const product = products.find((e) => e.id === 3);
+  // const product = products.find((e) => e.id === 3);
   const redirect = () => {
     navigate("/products/tele_medicine/insure");
   };
   return (
-    <div className={style.screen}>
-      <div className="desktop">
+    <PageWrapper>
+      {/* <div className="desktop">
         <Product product={product} benefitHeader={product.benefit_header}/>
         <div className={style.loadmore}>
           <button onClick={redirect}>Continue</button>
         </div>
-      </div>
-      <div className={`${style.wrap} mobile`}>
+      </div> */}
+      <div className={`${style.wrap} `}>
         <h2>TELE MEDICINE</h2>
         <h4>How to get Telemedicine</h4>
         {/* <p>
@@ -49,7 +50,7 @@ const Screen = () => {
           <button onClick={redirect}>Continue</button>
         </div>
       </div>
-    </div>
+      </PageWrapper>
   );
 };
 

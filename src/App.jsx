@@ -17,7 +17,9 @@ function App() {
   const queryClient = new QueryClient()
   const location = useLocation();
   const hideFooter = pathsToHideFooter.some(path => matchPath(path, location.pathname));
-  
+  // const FilteredProduct = products.filter((e)=> !e.name.includes("Tele Medicine"))
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <Nav />

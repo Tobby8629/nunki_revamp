@@ -1,9 +1,16 @@
 import style from './product.module.css'
 import ProductBox from '../Home/InnovatingPrice\'/ProductBox'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 
 const Product = ({product}) => {
+  const navigate = useNavigate();
+  const redirect = () => {
+    navigate(product?.route);
+  };
   return (
     <main className={style.main}>
       <div className={style.top}>
@@ -15,7 +22,7 @@ const Product = ({product}) => {
         </div>
         
         <div className={style.image}>
-          <img src={product?.productImage} alt={product.name} />
+          {product?.productImage && <img src={product?.productImage} alt={product.name} />}
         </div>
 
         <p className={style.text1}>{product?.text}</p>
@@ -27,13 +34,13 @@ const Product = ({product}) => {
           <div className={style.benefits}>
             <h2>Service Benefits</h2>
             <ul>
-              {product?.benefits?.map((benefit, index)=>(
+              {product?.benefits?.map((benefit)=>(
                 <li key={benefit?.id}>
                   {benefit?.table_head ? 
                     <BenefitTable benefit={benefit}/>: 
                     <>
                       <span className={style.check}>
-                       {index+1}
+                       <FontAwesomeIcon icon={faCheck} size='20' color='white'  />
                       </span>  
                       <span className={style.benefit}>
                         {benefit?.benefit}
@@ -47,6 +54,9 @@ const Product = ({product}) => {
                 </li>
               ))}
             </ul>
+            <div className={style.continue}>
+              <button onClick={redirect}>Continue</button>
+            </div>
           </div>
 
 
@@ -55,11 +65,15 @@ const Product = ({product}) => {
           product?.funeralSection ? 
           <FuneralTables funeralSection={product.funeralSection} select={select} changeselect={changeselect} /> : null 
         : null } */}
+
+
         
         <div className={style.card} >
           <ProductBox price={product} 
           styles={{backgroundColor:'var(--primary-font-color)' }} color="white" 
-          dark={true} min_desk={"100%"} desktop={"100%"}/>
+          dark={true} min_desk={"100%"} desktop={"100%"}
+          link={product?.route}
+          />
         </div>
 
       </div>
@@ -72,7 +86,8 @@ const Product = ({product}) => {
 }
 
 Product.propTypes = {
-  product: PropTypes.object
+  product: PropTypes.object,
+  link: PropTypes.string
 }
 
 export default Product

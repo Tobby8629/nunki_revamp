@@ -22,7 +22,7 @@ const Innovatingprice = () => {
       </div>
       <div className={style.textWrapper}>
         {topPrices?.map((price)=>(
-          <ProductBox price={price} key={price?.name} desktop='500px' />
+          <ProductBox price={price} key={price?.name} desktop='500px' link={price?.link}/>
         ))}
       </div>
       {showproduct < products?.length && (

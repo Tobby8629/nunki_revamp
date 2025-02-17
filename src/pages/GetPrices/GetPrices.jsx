@@ -27,6 +27,7 @@ const GetPrices = () => {
           prices?.map((price)=>
           <ProductBox key={price?.name} price={price} 
           desktop='32%'
+          link={price?.link}
           // color="#ffff"
           />
           )
