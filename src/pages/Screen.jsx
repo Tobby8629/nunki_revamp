@@ -11,21 +11,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Screen = () => {
-  const navigate = useNavigate(); 
-  const [steps, setSteps] = useState(false)
+  const navigate = useNavigate();
+  const [steps, setSteps] = useState(false);
   const product = products.find((e) => e.id === 3);
   const redirect = () => {
-    steps ?
-    navigate("/products/tele_medicine/insure") : setSteps(true)
+    steps ? navigate("/products/tele_medicine/insure") : setSteps(true);
   };
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0);
-  },[steps])
+  }, [steps]);
 
   return (
     <PageWrapper>
-      {steps ? 
-      <div className={`${style.wrap}`}>
+      {steps ? (
+        <div className={`${style.wrap}`}>
           <>
             <h2>TELE MEDICINE</h2>
             <h4>How to get Telemedicine</h4>
@@ -49,8 +48,9 @@ const Screen = () => {
               <button onClick={redirect}>Continue</button>
             </div>
           </>
-      </div> :
-      <div className={`${style.wrap}`}>
+        </div>
+      ) : (
+        <div className={`${style.wrap}`}>
           <>
             <h2>TELE MEDICINE</h2>
             <h4>{product?.sub}</h4>
@@ -59,7 +59,7 @@ const Screen = () => {
               {product?.benefits?.map((benefit) => (
                 <li key={benefit?.id}>
                   <span className={productstyle.check}>
-                    <FontAwesomeIcon icon={faCheck} color="white" size="20px"/>
+                    <FontAwesomeIcon icon={faCheck} color="white" size="20px" />
                   </span>
                   <span className={productstyle.benefit}>
                     {benefit?.benefit}
@@ -76,22 +76,25 @@ const Screen = () => {
               <button onClick={redirect}>Continue</button>
             </div>
           </>
-      </div>
-      }
-      </PageWrapper>
+        </div>
+      )}
+    </PageWrapper>
   );
 };
 
 export default Screen;
 
- {/* <div className="desktop">
+{
+  /* <div className="desktop">
         <Product product={product} benefitHeader={product.benefit_header}/>
         <div className={style.loadmore}>
           <button onClick={redirect}>Continue</button>
         </div>
-      </div> */}
-        {/* <p>
+      </div> */
+}
+{
+  /* <p>
           The Nunki Virtual Healthcare Membership is a subscription-based
           service that provides access to a team of healthcare professionals.
-        </p> */}
-
+        </p> */
+}
