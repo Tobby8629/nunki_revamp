@@ -1,6 +1,7 @@
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faTelegramPlane } from "@fortawesome/free-brands-svg-icons";
 import Swal from "sweetalert2";
+import { create, success } from "../../public/images/productImage/ProductImage";
 
 export const menu = [
   { name: "Home", link: "/", mobileOnly: true },
@@ -155,3 +156,36 @@ export const Alert = (icon, title, text, background) => {
     showConfirmButton: true,
   });
 };
+
+export const telemedSteps = {
+  title: "How to get Telemedicine",
+  benefits: [
+        {
+          id: 0,
+          benefit: "Create your Nunki Profile",
+          img: create,
+        },
+        {
+          id: 1,
+          benefit: "Accept Nunki Terms & conditions",
+        },
+        { 
+          id: 2, 
+          benefit: "Pay for your Telemedicine Product" 
+        },
+        { 
+          id: 3, 
+          benefit: 'Store Your Personalized token you receive safe it should look like "NUN838391"', 
+          img: success
+        },
+        {
+          id: 4,
+          benefit: "Follow the link to our Telemedicine product where you can create your digital medical ID.",
+        },
+        {
+          id: 5,
+          benefit:
+            "The rest is handled for you and you can start using the product",
+        }
+      ],
+} 

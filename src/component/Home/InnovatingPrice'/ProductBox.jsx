@@ -2,7 +2,7 @@ import style from './Innovatingprice.module.css'
 import { Link } from 'react-router-dom'
 import { angle } from '/public/images/Nunki/nunkiImages'
 
-const ProductBox = ({price, styles, tab, min_desk, desktop, color, dark}) => {
+const ProductBox = ({price, link, styles, tab, min_desk, desktop, color, dark}) => {
   const mystyle = {
     "--tab": tab,
   "--min-desk":min_desk,
@@ -14,7 +14,7 @@ const ProductBox = ({price, styles, tab, min_desk, desktop, color, dark}) => {
    
   return (
     <div className={style.card} style={mystyle}>
-      <Link className={style.link_cards} to={price?.link}  onClick={() => (price?.value)}>
+      <Link className={style.link_cards} to={link}  onClick={() => (price?.value)}>
       <h3><span>
         {price?.name} 
         </span></h3>
@@ -36,7 +36,7 @@ const ProductBox = ({price, styles, tab, min_desk, desktop, color, dark}) => {
         </div>
         <div className={style.button}>
           <button>
-          <Link to={price?.route} 
+          <Link to={link} 
             onClick={() => (price?.value)}
             target={check ? "_blank" : null} 
             rel={check ? "noopener noreferrer" : null} 

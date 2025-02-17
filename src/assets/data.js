@@ -1,8 +1,6 @@
 import { grey, ai, kids, funeral_cover } from "/public/images/blog/blog";
 import {
-  create,
   shackproduct,
-  success,
   telemed,
 } from "../../public/images/productImage/ProductImage";
 import { Dark } from "/public/images/dark/Dark";
@@ -141,18 +139,17 @@ export const products = [
   },
 
   {
-    id: 3,
-    name: "Tele Medicine",
-    benefit_header: "How to get Telemedicine",
-    price: 30,
+    id:3,
+    name:"Tele Medicine",
+    price:30,
     lightImage: light?.telemed,
     darkImage: Dark.telemed,
-    route: "/products/tele_medicine/insure_",
-    link: "/products/tele_medicine/x",
-    value: "Tele Medicine",
+    route: '/products/tele_medicine/insure_',
+    link: '/products/tele_medicine',
+    value: 'Tele Medicine',
     sub_name: "professional support just a call away",
     phone_number: "0861 113 527",
-    text: `Nunki’s Telemedicine has the goal of addressing
+    text: ` Nunki’s Telemedicine has the goal of addressing
             healthcare access barriers faced by millions
             every day. Our solution provides patients with
             instant access to certified doctors in a costeffective, convenient, and user-friendly way. We
@@ -160,36 +157,13 @@ export const products = [
             quality healthcare services`,
     productImage: telemed,
     benefits: [
-      {
-        id: 0,
-        benefit: "Create your Nunki Profile",
-        img: create,
-      },
-      {
-        id: 1,
-        benefit: "Accept Nunki Terms & conditions",
-      },
-      {
-        id: 2,
-        benefit: "Pay for your Telemedicine Product",
-      },
-      {
-        id: 3,
-        benefit:
-          'Store Your Personalized token you receive safe it should look like "NUN838391"',
-        img: success,
-      },
-      {
-        id: 4,
-        benefit:
-          "Follow the link to our Telemedicine product where you can create your digital medical ID.",
-      },
-      {
-        id: 5,
-        benefit:
-          "The rest is handled for you and you can start using the product",
-      },
-    ],
+      {id: 0, benefit:" 4 Virtual healthcare consultations for the 12-month period with a medical doctor 24 hours per day 7 days per week."}, 
+      {id:1, benefit:" Scripts at time of consult as indicated if needed or advise on what medication to dispense"},
+      {id:2, benefit:"6 facial scans."},
+      {id: 3, benefit: "Sick notes as appropriate"},
+      {id: 4, benefit: "Referral letters as appropriate for specialists/x-rays etc."},
+      {id: 5, benefit: "Patient may upload dependents (unlimited) who may use the consultations"},
+      {id: 6, benefit: "Additional bundle of consultations may be purchased once the initial consults have been utilised"},
   },
 ];
 

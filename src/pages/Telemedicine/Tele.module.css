@@ -1,17 +1,12 @@
 .wrapper {
     min-height:100vh;
     padding: 0 2rem;
-    padding-top:  125px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #e4f3ffd9;
 }
 
-.wrap {
-  padding: 3rem 1rem;
-  padding-top: 125px;
-}
 
 .wrap h2 {
   text-align: center;
@@ -291,6 +286,17 @@
     padding: 1rem 0;
     font-size: 20px;
   }
+
+  .benefits {
+    width: 50%;
+    margin: auto ;
+  }
+
+  .continue {
+    width: 200px;
+  }
+
+
 }
 
 @media (min-width:1024px) {
