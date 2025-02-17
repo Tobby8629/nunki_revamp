@@ -6,6 +6,7 @@ import { faEnvelope, faUser, faPhone } from "@fortawesome/free-solid-svg-icons";
 import useCustomMutation from "../api/Mutation";
 import { handleFeedback } from "../api/apifuncs";
 import { handlecallRequest } from "../api/apifuncs";
+import PageWrapper from "../component/Layout/pageWrapper/PageWrapper";
 
 const ContactUs = () => {
   const [feedback, setFeedback] = useState({
@@ -86,9 +87,9 @@ const ContactUs = () => {
   };
 
   return (
-    <section className={template.section}>
+     <PageWrapper>
       <div
-        className={template.main}
+        className={`${template.main} ${template.mainContact}`}
         style={{ padding: 0, justifyContent: "center" }}
       >
         <div className={template.ContactUs}>
@@ -233,7 +234,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-    </section>
+      </PageWrapper>
   );
 };
 
