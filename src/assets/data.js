@@ -145,16 +145,12 @@ export const products = [
     lightImage: light?.telemed,
     darkImage: Dark.telemed,
     route: '/products/tele_medicine/insure_',
-    link: '/products/tele_medicine',
+    link: '/products/tele_medicine/insure_',
     value: 'Tele Medicine',
+    sub: "What you get for R30?",
     sub_name: "professional support just a call away",
     phone_number: "0861 113 527",
-    text: ` Nunki’s Telemedicine has the goal of addressing
-            healthcare access barriers faced by millions
-            every day. Our solution provides patients with
-            instant access to certified doctors in a costeffective, convenient, and user-friendly way. We
-            believe that everyone should have access to
-            quality healthcare services`,
+    text: `The Nunki Healthcare Membership is a subscription-based service that provides access to a team of healthcare professionals`,
     productImage: telemed,
     benefits: [
       {id: 0, benefit:" 4 Virtual healthcare consultations for the 12-month period with a medical doctor 24 hours per day 7 days per week."}, 

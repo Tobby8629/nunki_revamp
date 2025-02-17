@@ -17,7 +17,7 @@ function App() {
   const queryClient = new QueryClient()
   const location = useLocation();
   const hideFooter = pathsToHideFooter.some(path => matchPath(path, location.pathname));
-  // const FilteredProduct = products.filter((e)=> !e.name.includes("Tele Medicine"))
+  const FilteredProduct = products.filter((e)=> !e.name.includes("Tele Medicine"))
 
 
   return (
@@ -30,7 +30,7 @@ function App() {
           {routes.map((route) => (
             <Route path={route?.route} element={route?.element ? <route.element /> : <ComingSoon />} key={route?.route} />
           ))}
-          {products.map((product) => (
+          {FilteredProduct.map((product) => (
             <Route key={product?.id} path={product?.link} element={product?.unavailable ? <ComingSoon /> : <Product product={product} benefitHeader={product.benefit_header}/>} />
           ))}
         </Routes>

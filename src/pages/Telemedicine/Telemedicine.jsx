@@ -61,7 +61,7 @@ const Telemedicine = () => {
 
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
-      <PageWrapper style={{ padding: 0 }} mainStyle={{ padding: 0 }}>
+      <PageWrapper style={{ padding: 0, background: "#e4f3ffd9" }} mainStyle={{ padding: 0 }}>
         <div className={style.wrapper}>
           {showPayment ? (
             <PaymentForm values={values} />

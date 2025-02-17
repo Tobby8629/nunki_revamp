@@ -16,6 +16,7 @@ const Product = ({product}) => {
       <div className={style.top}>
         <div className={style.header}>
           <h2>{product?.name}</h2>
+          <h4>{product?.sub}</h4>
           <p className={style.sub_name}>{product?.sub_name}</p>
           <p className={style.sub_name}>{product?.phone_number}</p>
           <p className={style.text}>{product?.text}</p>
