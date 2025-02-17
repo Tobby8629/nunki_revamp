@@ -164,6 +164,7 @@ export const products = [
       {id: 4, benefit: "Referral letters as appropriate for specialists/x-rays etc."},
       {id: 5, benefit: "Patient may upload dependents (unlimited) who may use the consultations"},
       {id: 6, benefit: "Additional bundle of consultations may be purchased once the initial consults have been utilised"},
+    ]
   },
 ];
 
