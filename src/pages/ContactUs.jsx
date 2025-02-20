@@ -87,7 +87,7 @@ const ContactUs = () => {
   };
 
   return (
-     <PageWrapper>
+    <PageWrapper>
       <div
         className={`${template.main} ${template.mainContact}`}
         style={{ padding: 0, justifyContent: "center" }}
@@ -180,9 +180,9 @@ const ContactUs = () => {
                 <span>info@nunki.africa</span>
               </a>
 
-              <a className={template.phone} href="tel:0217010874">
+              <a className={template.phone} href="tel:087 8201300">
                 <FontAwesomeIcon className={template.subicons} icon={faPhone} />
-                <span>021 701 0874</span>
+                <span>087 8201300</span>
               </a>
 
               <div
@@ -234,7 +234,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      </PageWrapper>
+    </PageWrapper>
   );
 };
 

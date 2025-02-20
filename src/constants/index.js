@@ -32,7 +32,7 @@ export const menu = [
         link: "mailto:info@nunki.africa",
         icon: faEnvelope,
       },
-      { name: "021 701 0874", link: "tel:+27217010874", icon: faPhone },
+      { name: "087 8201300", link: "tel:087 8201300", icon: faPhone },
       { name: "Message Us", link: "/contact", icon: faTelegramPlane },
     ],
   },
@@ -160,32 +160,34 @@ export const Alert = (icon, title, text, background) => {
 export const telemedSteps = {
   title: "How to get Telemedicine",
   benefits: [
-        {
-          id: 0,
-          benefit: "Create your Nunki Profile",
-          img: create,
-        },
-        {
-          id: 1,
-          benefit: "Accept Nunki Terms & conditions",
-        },
-        { 
-          id: 2, 
-          benefit: "Pay for your Telemedicine Product" 
-        },
-        { 
-          id: 3, 
-          benefit: 'Store Your Personalized token you receive safe it should look like "NUN838391"', 
-          img: success
-        },
-        {
-          id: 4,
-          benefit: "Follow the link to our Telemedicine product where you can create your digital medical ID.",
-        },
-        {
-          id: 5,
-          benefit:
-            "The rest is handled for you and you can start using the product",
-        }
-      ],
-} 
+    {
+      id: 0,
+      benefit: "Create your Nunki Profile",
+      img: create,
+    },
+    {
+      id: 1,
+      benefit: "Accept Nunki Terms & conditions",
+    },
+    {
+      id: 2,
+      benefit: "Pay for your Telemedicine Product",
+    },
+    {
+      id: 3,
+      benefit:
+        'Store Your Personalized token you receive safe it should look like "NUN838391"',
+      img: success,
+    },
+    {
+      id: 4,
+      benefit:
+        "Follow the link to our Telemedicine product where you can create your digital medical ID.",
+    },
+    {
+      id: 5,
+      benefit:
+        "The rest is handled for you and you can start using the product",
+    },
+  ],
+};
