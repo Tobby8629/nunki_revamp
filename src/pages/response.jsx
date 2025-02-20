@@ -59,7 +59,7 @@ const Response = () => {
             to make yor Digital medical ID to start using telemedicine
           </p>
           <Link
-            to="https://carefirst.co.za/nunki"
+            to="https://qa-patient.care-first.co.za/onboarding?clientCode=610C553620"
             target="_blank"
             className={product.link}
           >
