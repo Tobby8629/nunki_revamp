@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import template from "./comingScreen.module.css";
-import { rotate } from "../../../public/images/Nunki/nunkiImages";
+import { comin_soon } from "../../../public/images/Nunki/nunkiImages";
+import { Navigate, Routes, useNavigate } from "react-router-dom";
 
 
 const ComingSoon = () => {
   const [launchDate] = useState(new Date("2024-06-01"));
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
+  const Navigate = useNavigate()
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
@@ -34,21 +35,23 @@ const ComingSoon = () => {
   return (
     <section className={template.section}>
       <div className={template.image}>
-        <img src={rotate} alt="we coming soon"/>
+        <img src={comin_soon} alt="we coming soon"/>
       </div>
       <div className={template.headerwrapper}>
-        <h2 className={template.headerText}>"Launching Soon"</h2>
+        {/* <h2 className={template.headerText}>"Launching Soon"</h2> */}
       </div>
       <div className={template.main}>
-        <p>
+        {/* <p>
           We're working on something awesome. Please check back in{" "}
           <span style={{ color: "red", fontWeight: "bold" }}>
             {timeLeft.days} days, {timeLeft.hours} hours, {timeLeft.minutes}{" "}
             minutes, and {timeLeft.seconds} seconds
           </span>
           .
-        </p>
+        </p> */}
+        <button onClick={()=>Navigate({pathname: "/"})}>Go Back</button>
       </div>
+      
     </section>
   );
 };
