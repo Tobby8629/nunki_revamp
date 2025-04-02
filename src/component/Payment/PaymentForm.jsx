@@ -1,56 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const PaymentForm = ({ values }) => {
-  const [checkoutId, setCheckoutId] = React.useState("");
-  const [error, setError] = React.useState("");
-  console.log(values);
+  const [checkoutId, setCheckoutId] = useState("");
+  const [error, setError] = useState("");
 
-  React.useEffect(() => {
-    generateCheckoutId();
+  useEffect(() => {
+    authenticateAndGenerateCheckoutId();
   }, []);
 
-  const generateCheckoutId = async () => {
-    const url = import.meta.env.VITE_CHECKOUT_ENDPOINT;
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: import.meta.env.VITE_PAYMENT_AUTHORIZATION,
-    };
-    const data = {
-      entityId: import.meta.env.VITE_ENTITY_ID,
-      amount: values.cover_price,
-      currency: "ZAR",
-      paymentType: "PA",
-      "standingInstruction.mode": "INITIAL",
-      "standingInstruction.type": "UNSCHEDULED",
-      "standingInstruction.source": "CIT",
-      createRegistration: "true",
-      integrity: "true",
-      merchantTransactionId: `INV-${values.id}`,
-    };
-
+  const authenticate = async () => {
     try {
-      const response = await axios.post(
-        url,
-        new URLSearchParams(data).toString(),
-        { headers }
-      );
-      const checkoutId = response.data.id;
-      setCheckoutId(checkoutId);
-      setError("");
-
-      // Clear localStorage if checkoutId is generated
-      // if (checkoutId) {
-      //   localStorage.clear();
-      // }
+      const response = await fetch(import.meta.env.VITE_PAYMENT_AUTHORIZATION, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientId: import.meta.env.VITE_CLIENT_ID,
+          clientSecret: import.meta.env.VITE_CLIENT_SECRET,
+          merchantId: import.meta.env.VITE_MERCHANT_ID,
+        }),
+      });
+      if (!response.ok) throw new Error("Unable to authenticate");
+      const data = await response.json();
+      return data.access_token;
     } catch (error) {
-      setError(
-        "An error occurred while generating the checkout ID. Please refresh the page and try again."
-      );
+      setError("Authentication failed. Please try again.");
+      return null;
     }
   };
 
-  React.useEffect(() => {
+  const createCheckoutId = async (token) => {
+    try {
+      const response = await fetch(import.meta.env.VITE_CHECKOUT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          Origin: import.meta.env.VITE_DOMAIN,
+        },
+        body: JSON.stringify({
+          entityId: import.meta.env.VITE_ENTITY_ID,
+          amount: values.cover_price,
+          currency: "ZAR",
+          paymentType: "PA",
+          "standingInstruction.mode": "INITIAL",
+          "standingInstruction.type": "UNSCHEDULED",
+          "standingInstruction.source": "CIT",
+          createRegistration: "true",
+          integrity: "true",
+          merchantTransactionId: `INV-${values.id}`,
+        }),
+      });
+      if (!response.ok) throw new Error("Unable to retrieve Checkout ID");
+      const data = await response.json();
+      setCheckoutId(data.id);
+    } catch (error) {
+      setError("Failed to generate checkout ID. Please try again.");
+    }
+  };
+
+  const authenticateAndGenerateCheckoutId = async () => {
+    const token = await authenticate();
+    if (token) await createCheckoutId(token);
+  };
+
+  useEffect(() => {
     if (checkoutId && !document.getElementById("paymentWidgetForm")) {
       const script = document.createElement("script");
       script.src = `${
@@ -58,15 +72,13 @@ const PaymentForm = ({ values }) => {
       }?checkoutId=${checkoutId}`;
       script.async = true;
       script.integrity = "{ integrity }";
-      script.crossorigin = "anonymous";
-      const formContainer = document.getElementById("payment-form-container");
-      formContainer.appendChild(script);
+      script.crossOrigin = "anonymous";
+      document.getElementById("payment-form-container").appendChild(script);
     }
   }, [checkoutId]);
 
-  // Construct the URL with id_number parameter
   const actionUrl = new URL(
-    values.accountReference !== undefined && values.accountReference !== ""
+    values.accountReference
       ? import.meta.env.VITE_SUCCESS1_ENDPOINT
       : import.meta.env.VITE_SUCCESS2_ENDPOINT
   );
@@ -74,9 +86,7 @@ const PaymentForm = ({ values }) => {
 
   return (
     <div>
-      {/* <h2>Please proceed with the payment to secure your policy</h2> */}
       {error && <p style={{ color: "red" }}>{error}</p>}
-
       <div id="payment-form-container">
         <form
           action={actionUrl.toString()}
