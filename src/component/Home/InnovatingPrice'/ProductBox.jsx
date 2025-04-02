@@ -19,15 +19,13 @@ const ProductBox = ({
     "--text-color": color,
   };
 
-  const check = price.name.includes("Shack") || price.name.includes("Merchant");
-
   return (
     <div className={style.card} style={mystyle}>
       <Link
         className={style.link_cards}
-        to={check ? "#" : link}
-        onClick={check ? (e) => e.preventDefault() : () => price?.value}
-        style={check ? { pointerEvents: "none", opacity: 0.5 } : {}}
+        to={link}
+        onClick={() => price?.value}
+        
       >
         <h3>
           <span>{price?.name}</span>
@@ -54,18 +52,13 @@ const ProductBox = ({
           )}
         </div>
         <div className={style.button}>
-          <button
-            disabled={check}
-            style={check ? { opacity: 0.5, cursor: "not-allowed" } : {}}
-          >
+          <button>
             <Link
-              to={check ? "#" : link}
-              onClick={check ? (e) => e.preventDefault() : () => price?.value}
-              target={check ? "_blank" : null}
-              rel={check ? "noopener noreferrer" : null}
+              to={link}
+              onClick={() => price?.value}
+              rel={"noopener noreferrer"}
               className={style.getqoute}
-              style={check ? { pointerEvents: "none", opacity: 0.5 } : {}}
-            >
+              >
               BUY NOW
             </Link>
           </button>

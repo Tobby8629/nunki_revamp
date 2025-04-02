@@ -17,6 +17,7 @@ import card1042 from './1042.png';
 import card1250 from './1250.png';
 import card1667 from './1667.png';
 import card2083 from './2083.png';
+import comin_soon from './comin_soon.gif';
 
 export {
   headset,
@@ -37,5 +38,6 @@ export {
   card1250,
   card1667,
   card2083,
+  comin_soon,
   rotate,
 };
