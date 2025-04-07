@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Response from "../../pages/response";
+import Result from "../../pages/result";
 
 const CHECKOUT_JS = import.meta.env.VITE_CHECKOUT_JS;
 
@@ -6,8 +8,11 @@ const PaymentForm = ({ values }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
 
   useEffect(() => {
+    setMessage("");
+
     if (document.querySelector(`script[src="${CHECKOUT_JS}"]`)) {
       setIsScriptLoaded(true);
       return;
@@ -16,8 +21,17 @@ const PaymentForm = ({ values }) => {
     const script = document.createElement("script");
     script.src = CHECKOUT_JS;
     script.async = true;
-    script.onload = () => setIsScriptLoaded(true);
-    script.onerror = () => setMessage("Failed to load payment script.");
+
+    script.onload = () => {
+      setIsScriptLoaded(true);
+      setMessage("");
+    };
+
+    script.onerror = () =>
+      setMessage(
+        "⚠️ Failed to load the payment script. Please refresh and try again."
+      );
+
     document.body.appendChild(script);
 
     return () => {
@@ -27,13 +41,12 @@ const PaymentForm = ({ values }) => {
 
   const getCheckoutId = async () => {
     if (!isScriptLoaded) {
-      setMessage("Payment script is still loading...");
+      setMessage("⚠️ Payment script is still loading...");
       return;
     }
 
     setIsLoading(true);
-    setMessage("Loading...");
-
+    setMessage("");
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/checkout`,
@@ -70,17 +83,17 @@ const PaymentForm = ({ values }) => {
           onCompleted: (event) => {
             console.log(event);
             checkout.unmount();
-            setMessage("Paid!");
+            setIsPaid(true);
           },
           onCancelled: (event) => {
             console.log(event);
             checkout.unmount();
-            setMessage("Cancelled!");
+            setMessage("❌ Payment Cancelled.");
           },
           onExpired: (event) => {
             console.log(event);
             checkout.unmount();
-            setMessage("Expired!");
+            setMessage("⌛ Payment Expired. Please try again.");
           },
         },
       });
@@ -88,22 +101,31 @@ const PaymentForm = ({ values }) => {
       checkout.render("#payment-form");
     } catch (error) {
       console.error("Error fetching checkout ID:", error.message);
-      setMessage("Failed to initiate checkout.");
+      setMessage("❌ Failed to initiate checkout. Please try again.");
     }
 
     setIsLoading(false);
   };
 
+  if (isPaid) {
+    return values.product_name === "Tele Medicine" ? (
+      <Response values={values} />
+    ) : (
+      <Result values={values} />
+    );
+  }
+
   return (
     <div>
-      <h1>Embedded Checkout - Example Integration</h1>
       <div id="complete-checkout">
-        <button onClick={getCheckoutId} disabled={isLoading || !isScriptLoaded}>
+        <button onClick={getCheckoutId} disabled={!isScriptLoaded || isLoading}>
           {isLoading ? "Processing..." : "Pay Now"}
         </button>
       </div>
-      <div style={{ height: "80vh" }} id="payment-form"></div>
-      <p>{message}</p>
+      <div style={{ height: "50vh" }} id="payment-form"></div>
+      {message && (
+        <p style={{ color: "red", textAlign: "center" }}>{message}</p>
+      )}
     </div>
   );
 };
