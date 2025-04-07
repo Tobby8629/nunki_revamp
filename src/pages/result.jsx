@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { products } from "../assets/data";
 import product from "./GetPrices/Getprices.module.css";
 import style from "../component/Home/InnovatingPrice'/Innovatingprice.module.css";
 
-const Result = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+const Result = ({ values }) => {
   const [activeCoverProducts, setActiveCoverProducts] = useState([]);
   const [addProducts, setAddProducts] = useState(products);
   const [error, setError] = useState("");
@@ -24,7 +22,7 @@ const Result = () => {
       );
       const quotes = response.data;
 
-      const userIdNumber = searchParams.get("id_number");
+      const userIdNumber = values.id;
       const userQuotes = quotes.filter(
         (quote) => quote.id_number === userIdNumber
       );
