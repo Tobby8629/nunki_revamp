@@ -1,11 +1,10 @@
 .wrapper {
-    min-height:100vh;
-    padding: 0 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  min-height: 100vh;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
 
 .wrap h2 {
   text-align: center;
@@ -88,8 +87,8 @@
   width: fit-content;
 }
 
-.top ,
-.top_tc{
+.top,
+.top_tc {
   background-color: var(--primary-font-color);
   height: 60px;
   padding: 0 0.5rem;
@@ -100,10 +99,10 @@
   border-top-left-radius: 20px;
 }
 
-.top_tc h2{
+.top_tc h2 {
   font-family: var(--primary-font);
   font-size: 30px;
-  font-weight: 800
+  font-weight: 800;
 }
 
 .down {
@@ -130,7 +129,7 @@
 }
 
 .ancor {
-  color: #1271B8;
+  color: #1271b8;
   font-weight: 800;
   text-decoration: underline;
 }
@@ -146,7 +145,7 @@
 }
 
 .number {
-  padding: .8rem;
+  padding: 0.8rem;
   border: none;
   outline: none;
   background-color: #e4f3ffd9;
@@ -215,10 +214,10 @@
 
 .check {
   margin: 1rem 0;
-  margin-left: 0.5rem;  
+  margin-left: 0.5rem;
 }
 
-.errorMessage{
+.errorMessage {
   color: red;
   font-size: 14px;
   margin: 5px 0;
@@ -234,8 +233,6 @@
   margin-bottom: 3rem;
 }
 
-
-
 .loadmore > button {
   outline: none;
   border: none;
@@ -246,22 +243,21 @@
   color: white;
   width: fit-content;
   font-size: 15px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-family: var(--primary-font);
 }
 
-
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #e4f3ffd9;
-}
+  }
 
   .top,
-  .down{
+  .down {
     width: 60%;
     margin: 0 auto;
   }
@@ -276,7 +272,7 @@
   }
 
   .down button {
-    padding: .7rem;
+    padding: 0.7rem;
     font-size: 16px;
   }
 
@@ -289,36 +285,33 @@
   .benefits,
   .wrap p {
     width: 60%;
-    margin: auto ;
+    margin: auto;
   }
 
   .continue {
     width: 200px;
   }
-
-
 }
 
-@media (min-width:1024px) {
+@media (min-width: 1024px) {
   .top,
   .down,
-  .main{
+  .main {
     width: 50%;
     margin: 0 auto;
   }
 }
 
-@media (min-width:1280px) {
+@media (min-width: 1280px) {
   .benefits,
   .wrap p {
     width: 50%;
-    margin: auto ;
+    margin: auto;
   }
 
   .top,
-  .down{
+  .down {
     width: 40%;
     margin: 0 auto;
   }
 }
-

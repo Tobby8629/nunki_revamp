@@ -5,16 +5,20 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { FormContext } from "../../../pages/Telemedicine/createContext";
 
-export const InputSwitch = ({page}) => {
+export const InputSwitch = ({ page }) => {
   const { fields, form, setform } = useContext(FormContext);
-  console.log(fields)
+  console.log(fields);
 
   switch (page) {
     case "name":
       return (
         <div className={style.nameWrapper}>
           {fields.map((e) => (
-            <CheckInput e={e} extra={{ width: "48%", className: "input"}} key={e.headline}/>
+            <CheckInput
+              e={e}
+              extra={{ width: "48%", className: "input" }}
+              key={e.headline}
+            />
           ))}
         </div>
       );
@@ -23,26 +27,36 @@ export const InputSwitch = ({page}) => {
         <div className={style.nameWrapper}>
           {fields.map((e, index) => (
             <React.Fragment key={e.id || e.name || index}>
-              {e.name === "email_Address"
-                ? <CheckInput e={e} extra={{
+              {e.name === "email_Address" ? (
+                <CheckInput
+                  e={e}
+                  extra={{
                     inputStyle: style.full,
                     className: "input",
                     type: "email",
-                  }} />
-                : e.name === "id_type"
-                ? <CheckInput e={e} extra={{
+                  }}
+                />
+              ) : e.name === "id_type" ? (
+                <CheckInput
+                  e={e}
+                  extra={{
                     width: "48%",
                     inputWrapper: style.idType,
                     className: "input",
-                }} />
-                : <CheckInput e={e} extra={{
+                  }}
+                />
+              ) : (
+                <CheckInput
+                  e={e}
+                  extra={{
                     width: "48%",
                     className: "input",
                     other: fields[0]?.options?.find(
                       (ex) => ex.value == form.id_type
                     )?.name,
-                  }} />
-                }
+                  }}
+                />
+              )}
             </React.Fragment>
           ))}
         </div>
@@ -99,7 +113,7 @@ export const InputSwitch = ({page}) => {
               <span
                 className={`${style.check} ${form.terms ? style.active : ""}`}
               ></span>
-              I agree to the Nunki `&apos;`s T&Cs.
+              I agree to the Nunki&apos;s T&Cs.
             </label>
             <label className={style.checkbox}>
               <input
@@ -122,17 +136,15 @@ export const InputSwitch = ({page}) => {
         </div>
       );
 
-    default: return(
-      <div>
-        <p>Thank you</p>
-      </div>
-    )
+    default:
+      return (
+        <div>
+          <p>Thank you</p>
+        </div>
+      );
   }
-  
 };
 
 InputSwitch.propTypes = {
-  page: PropTypes.string
+  page: PropTypes.string,
 };
-
-

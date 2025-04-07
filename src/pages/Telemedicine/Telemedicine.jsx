@@ -34,6 +34,7 @@ const Telemedicine = () => {
     cover_price: 30,
     id: form.id_number,
     accountReference: accountReference,
+    product_name: "Tele Medicine",
   };
 
   const { mutateAsync: handleSubmitMutation } = useCustomMutation();
@@ -61,14 +62,17 @@ const Telemedicine = () => {
 
   return (
     <FormContext.Provider value={{ tab, form, setform, fields }}>
-      <PageWrapper style={{ padding: 0, background: "#e4f3ffd9" }} mainStyle={{ padding: 0 }}>
+      <PageWrapper
+        style={{ padding: 0, background: "#e4f3ffd9" }}
+        mainStyle={{ padding: 0 }}
+      >
         <div className={style.wrapper}>
           {showPayment ? (
             <PaymentForm values={values} />
           ) : (
             <>
               {tab === pages.length - 1 ? (
-                <div className={style.top_tc}>
+                <div className={style.top}>
                   <h2>T&Cs</h2>
                 </div>
               ) : (
