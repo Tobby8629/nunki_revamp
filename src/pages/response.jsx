@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import product from "./GetPrices/Getprices.module.css";
 
-const Response = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+const Response = ({ values }) => {
   const [error, setError] = useState("");
   const [userName, setUserName] = useState("");
   const [ReferenceNumber, setReferenceNumber] = useState("");
 
   useEffect(() => {
-    localStorage.clear();
     fetchTelemedicine();
   }, []);
 
@@ -21,10 +18,9 @@ const Response = () => {
         "https://nunkiapi-kkr1.onrender.com/api/v1/telemedicine"
       );
       const telemedicineData = telemedicineResponse.data;
-
-      const userIdNumber = searchParams.get("id_number");
+      const userIdNumber = values.id;
       const userTelemedicine = telemedicineData.filter(
-        (telemedicine) => telemedicine.id_number === userIdNumber
+        (telemedicine) => userIdNumber === telemedicine.id_number
       );
 
       if (userTelemedicine.length > 0) {
