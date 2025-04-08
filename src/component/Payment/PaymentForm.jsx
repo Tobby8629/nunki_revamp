@@ -4,6 +4,7 @@ import Response from "../../pages/response";
 import Result from "../../pages/result";
 import { botLogo } from "../../../public/images/Nunki/nunkiImages";
 import PropTypes from "prop-types";
+// import { addAccountToCareFirst } from "../../api/apifuncs";
 
 const CHECKOUT_JS = import.meta.env.VITE_CHECKOUT_JS;
 
@@ -83,9 +84,26 @@ const PaymentForm = ({ values }) => {
           enableCardBrandDisplay: true,
         },
         events: {
-          onCompleted: (event) => {
+          onCompleted: async (event) => {
             console.log(event);
             checkout.unmount();
+            const telemedicine = {
+              account_reference: values.account_reference,
+              id_number: values.id_number,
+              last_name: values.lastName,
+            };
+            await fetch(
+              `${
+                import.meta.env.VITE_BACKEND_URL
+              }/api/v1/carefirst/add_account`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(telemedicine),
+              }
+            );
             setIsPaid(true);
           },
           onCancelled: (event) => {
@@ -120,28 +138,39 @@ const PaymentForm = ({ values }) => {
 
   return (
     <>
-    <h2 className={style.header}>Payment Form</h2>
-    <p className={style.headerText}>payment for {values.product_name}</p>
-    <div>
-      <div className={style.paymentImg}>
-        <img src={botLogo} alt={"rotate"} style={{objectFit: "contain"}}/>
+      <h2 className={style.header}>Payment Form</h2>
+      <p className={style.headerText}>payment for {values.product_name}</p>
+      <div>
+        <div className={style.paymentImg}>
+          <img src={botLogo} alt={"rotate"} style={{ objectFit: "contain" }} />
+        </div>
+        <div id="complete-checkout" className={style.paymentButton}>
+          <button
+            onClick={getCheckoutId}
+            disabled={!isScriptLoaded || isLoading}
+          >
+            {isLoading ? "Processing..." : "Pay Now"}
+          </button>
+        </div>
+        <div className={style.paymentForm} id="payment-form"></div>
+        {message && (
+          <p style={{ color: "red", textAlign: "center" }}>{message}</p>
+        )}
+
+        <div className={style.keyValueDisplay}>
+          {Object.entries(values).map(([key, val]) => (
+            <p key={key}>
+              <strong>{key}:</strong> {val?.toString()}
+            </p>
+          ))}
+        </div>
       </div>
-      <div id="complete-checkout" className={style.paymentButton}>
-        <button onClick={getCheckoutId} disabled={!isScriptLoaded || isLoading}>
-          {isLoading ? "Processing..." : "Pay Now"}
-        </button>
-      </div>
-      <div className={style.paymentForm}id="payment-form"></div>
-      {message && (
-        <p style={{ color: "red", textAlign: "center" }}>{message}</p>
-      )}
-    </div>
     </>
   );
 };
 
 PaymentForm.propTypes = {
   values: PropTypes.object,
-}
+};
 
 export default PaymentForm;
