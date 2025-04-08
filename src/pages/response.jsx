@@ -19,7 +19,7 @@ const Response = ({ values }) => {
         "https://nunkiapi-kkr1.onrender.com/api/v1/telemedicine"
       );
       const telemedicineData = telemedicineResponse.data;
-      const userIdNumber = values.id;
+      const userIdNumber = values.id_number;
       const userTelemedicine = telemedicineData.filter(
         (telemedicine) => userIdNumber === telemedicine.id_number
       );
@@ -69,8 +69,7 @@ const Response = ({ values }) => {
 };
 
 Response.propTypes = {
-  values: PropTypes.object
- }
-
+  values: PropTypes.object,
+};
 
 export default Response;
