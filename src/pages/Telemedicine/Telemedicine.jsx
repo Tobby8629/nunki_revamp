@@ -16,7 +16,7 @@ const Telemedicine = () => {
   const [fields, setFields] = useState([]);
   const [showPayment, setShowPayment] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false); // Local loading state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const filter = currentPage(TelemedInputs, pages, tab);
@@ -25,29 +25,38 @@ const Telemedicine = () => {
     }
   }, [tab]);
 
-  const generateAccountReference = () => {
-    return Math.random().toString(36).substring(2, 10).toUpperCase();
-  };
+  useEffect(() => {
+    const generateAccountReference = () => {
+      return Math.random().toString(36).substring(2, 10).toUpperCase();
+    };
+    setform((prevForm) => {
+      if (!prevForm.account_reference) {
+        return {
+          ...prevForm,
+          account_reference: generateAccountReference(),
+        };
+      }
+      return prevForm;
+    });
+  }, []);
 
-  const accountReference = generateAccountReference();
   const values = {
-    cover_price: 30,
-    id: form.id_number,
-    accountReference: accountReference,
+    ...form,
     product_name: "Tele Medicine",
+    cover_price: 30,
   };
 
   const { mutateAsync: handleSubmitMutation } = useCustomMutation();
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    setErrorMessages([]); // Reset error messages
+    setErrorMessages([]);
 
     try {
       await handleTelemedicine(
         form,
         values,
-        accountReference,
+        form.account_reference,
         handleSubmitMutation,
         setShowPayment
       );
@@ -71,15 +80,11 @@ const Telemedicine = () => {
             <PaymentForm values={values} />
           ) : (
             <>
-              {tab === pages.length - 1 ? (
-                <div className={style.top}>
-                  <h2>T&Cs</h2>
-                </div>
-              ) : (
-                <div className={style.top}>
-                  <h2>Purchase Telemedicine</h2>
-                </div>
-              )}
+              <div className={style.top}>
+                <h2>
+                  {tab === pages.length - 1 ? "T&Cs" : "Purchase Telemedicine"}
+                </h2>
+              </div>
 
               <div className={style.down}>
                 <div>
