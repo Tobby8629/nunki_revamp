@@ -57,6 +57,10 @@ const PaymentForm = ({ values }) => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            amount: values.cover_price,
+            merchant_transaction_id: `INVOICE-${values.id_number}-${values.product_name}`,
+          }),
         }
       );
 
@@ -156,14 +160,6 @@ const PaymentForm = ({ values }) => {
         {message && (
           <p style={{ color: "red", textAlign: "center" }}>{message}</p>
         )}
-
-        <div className={style.keyValueDisplay}>
-          {Object.entries(values).map(([key, val]) => (
-            <p key={key}>
-              <strong>{key}:</strong> {val?.toString()}
-            </p>
-          ))}
-        </div>
       </div>
     </>
   );
