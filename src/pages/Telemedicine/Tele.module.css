@@ -1,6 +1,7 @@
 .wrapper {
   min-height: 100vh;
-  padding: 0 2rem;
+  padding: 2rem;
+  padding-top: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,7 +110,7 @@
   background-color: rgb(255, 255, 255);
   min-height: 200px;
   position: relative;
-  padding: 2rem 1rem;
+  padding: 1rem;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }

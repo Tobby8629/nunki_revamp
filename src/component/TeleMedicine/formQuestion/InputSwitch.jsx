@@ -7,7 +7,6 @@ import { FormContext } from "../../../pages/Telemedicine/createContext";
 
 export const InputSwitch = ({ page }) => {
   const { fields, form, setform } = useContext(FormContext);
-  console.log(fields);
 
   switch (page) {
     case "name":

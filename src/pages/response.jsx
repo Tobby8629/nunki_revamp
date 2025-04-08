@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import product from "./GetPrices/Getprices.module.css";
+import PropTypes from "prop-types";
 
 const Response = ({ values }) => {
   const [error, setError] = useState("");
@@ -66,5 +67,10 @@ const Response = ({ values }) => {
     </section>
   );
 };
+
+Response.propTypes = {
+  values: PropTypes.object
+ }
+
 
 export default Response;

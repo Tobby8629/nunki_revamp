@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import style from "./Payment.module.css";
 import Response from "../../pages/response";
 import Result from "../../pages/result";
+import { botLogo } from "../../../public/images/Nunki/nunkiImages";
+import PropTypes from "prop-types";
 
 const CHECKOUT_JS = import.meta.env.VITE_CHECKOUT_JS;
 
@@ -116,18 +119,29 @@ const PaymentForm = ({ values }) => {
   }
 
   return (
+    <>
+    <h2 className={style.header}>Payment Form</h2>
+    <p className={style.headerText}>payment for {values.product_name}</p>
     <div>
-      <div id="complete-checkout">
+      <div className={style.paymentImg}>
+        <img src={botLogo} alt={"rotate"} style={{objectFit: "contain"}}/>
+      </div>
+      <div id="complete-checkout" className={style.paymentButton}>
         <button onClick={getCheckoutId} disabled={!isScriptLoaded || isLoading}>
           {isLoading ? "Processing..." : "Pay Now"}
         </button>
       </div>
-      <div style={{ height: "50vh" }} id="payment-form"></div>
+      <div className={style.paymentForm}id="payment-form"></div>
       {message && (
         <p style={{ color: "red", textAlign: "center" }}>{message}</p>
       )}
     </div>
+    </>
   );
 };
+
+PaymentForm.propTypes = {
+  values: PropTypes.object,
+}
 
 export default PaymentForm;

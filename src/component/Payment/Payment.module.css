@@ -1,0 +1,79 @@
+.header {
+  text-align: center;
+}
+
+.headerText {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 20px;
+  margin-block: .5rem;
+}
+
+.paymentImg {
+  width: 50%;
+  height: 50%;
+  margin-block: 3rem;
+  margin-inline: auto;
+  animation: jumper 3s linear infinite;
+}
+
+.paymentButton {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+@keyframes jumper {
+    0% {
+      transform: translateY(-3px);
+    }
+    25%{
+      transform: translateY(6px);
+    }
+    45% {
+      transform: translateY(10px);
+    }
+    65% {
+      transform: translateY(-10px);
+    }
+  
+    85% {
+      transform: translateY(-6px);
+    }
+  
+    100% {
+      transform: translateY(-3px);
+    }
+  
+  }
+  
+
+.paymentImg img {
+  width: 100%;
+  height: 100%;
+}
+
+.paymentForm {
+  min-height: 1vh;
+}
+
+
+@media (min-width: 768px) {
+  .paymentImg {
+    width: 25%;
+    height: 25%;
+  }
+  .paymentButton {
+    width: 35%;
+  }   
+}
+
+@media (min-width: 1024px) {
+  .paymentImg {
+    width: 20%;
+    height: 20%;
+  }
+  .paymentButton {
+    width: 25%;
+  }
+    
+}
