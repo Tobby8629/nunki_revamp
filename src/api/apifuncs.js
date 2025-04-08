@@ -87,52 +87,10 @@ const dispatchNewQuote = async (form, values, handleSubmitMutation) => {
 
   await handleSubmitMutation({
     method: "POST",
-    endpoint: "qoutes", // Update with the actual endpoint
+    endpoint: "qoutes",
     params: quote,
   });
 };
-
-// const addAccountToCareFirst = async (telemedicine) => {
-//   try {
-//     const response = await axios.post(
-//       "https://qa-patient.care-first.co.za/api/external/cfp-patient/client-account-management/add-account",
-//       {
-//         clientCode: "610C553620",
-//         totalAccounts: 1,
-//         responseWebhookURL: "https://nunki.vercel.app/response",
-//         action: "add",
-//         accounts: [
-//           {
-//             accountReference: telemedicine.account_reference,
-//             accountHolderIdNumber: telemedicine.id_number,
-//             accountHolderSurname: telemedicine.last_name,
-//             planCode: "B75A6",
-//           },
-//         ],
-//       },
-//       {
-//         headers: {
-//           "x-api-key": "9bu1ytOP6uz6eSEfhIYx",
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-
-//     if (response.status === 200) {
-//       Alert("green", "success", "Sucess...", `Account created in carefirst!`);
-//     } else {
-//       throw new Error("Error adding account to CareFirst");
-//     }
-//   } catch (error) {
-//     console.error("Error adding account to CareFirst:", error);
-//     Alert(
-//       "yellow",
-//       "error",
-//       "Oops...",
-//       `Account could not be added to CareFirst. Please try again later`
-//     );
-//   }
-// };
 
 export const handleTelemedicine = async (
   form,
@@ -141,7 +99,6 @@ export const handleTelemedicine = async (
   handleSubmitMutation,
   setShowPayment
 ) => {
-  //makes sure no field is empty and required field are compulsory
   const requirefields = [
     "firstName",
     "lastName",
@@ -162,8 +119,6 @@ export const handleTelemedicine = async (
     );
     return;
   }
-
-  //Get all data required to prepare API for consuption
   const telemedicine = {
     first_name: form.firstName,
     last_name: form.lastName,
@@ -189,7 +144,6 @@ export const handleTelemedicine = async (
       await dispatchNewCustomer(form, handleSubmitMutation);
       await dispatchNewQuote(form, values, handleSubmitMutation);
       setShowPayment(true);
-      // await addAccountToCareFirst(telemedicine);
     } else {
       throw new Error("Error processing telemedicine request");
     }
