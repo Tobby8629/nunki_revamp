@@ -16,7 +16,12 @@ const Response = ({ values }) => {
   const fetchTelemedicine = async () => {
     try {
       const telemedicineResponse = await axios.get(
-        "https://nunkiapi-kkr1.onrender.com/api/v1/telemedicine"
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/telemedicine`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       const telemedicineData = telemedicineResponse.data;
       const userIdNumber = values.id_number;
@@ -56,7 +61,7 @@ const Response = ({ values }) => {
             to make yor Digital medical ID to start using telemedicine
           </p>
           <Link
-            to="https://qa-patient.care-first.co.za/onboarding?clientCode=610C553620"
+            to="https://patient.care-first.co.za/onboarding?clientCode=610C553620"
             target="_blank"
             className={product.link}
           >
