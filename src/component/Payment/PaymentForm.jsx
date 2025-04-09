@@ -50,7 +50,7 @@ const PaymentForm = ({ values }) => {
     }
 
     setIsLoading(true);
-    setIsPaymentStarted(true); // Hide UI
+    setIsPaymentStarted(true);
     setMessage("");
 
     try {
@@ -147,13 +147,13 @@ const PaymentForm = ({ values }) => {
           onCancelled: (event) => {
             console.log(event);
             checkout.unmount();
-            setIsPaymentStarted(false); // Show UI again
+            setIsPaymentStarted(false);
             setMessage("❌ Payment Cancelled.");
           },
           onExpired: (event) => {
             console.log(event);
             checkout.unmount();
-            setIsPaymentStarted(false); // Show UI again
+            setIsPaymentStarted(false);
             setMessage("⌛ Payment Expired. Please try again.");
           },
         },
