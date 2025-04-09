@@ -3,7 +3,6 @@ import style from "./Payment.module.css";
 import Response from "../../pages/response";
 import Result from "../../pages/result";
 import { botLogo } from "../../../public/images/Nunki/nunkiImages";
-import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 
 const CHECKOUT_JS = import.meta.env.VITE_CHECKOUT_JS;
