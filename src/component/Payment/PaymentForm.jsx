@@ -4,7 +4,7 @@ import Response from "../../pages/response";
 import Result from "../../pages/result";
 import { botLogo } from "../../../public/images/Nunki/nunkiImages";
 import PropTypes from "prop-types";
-// import { addAccountToCareFirst } from "../../api/apifuncs";
+import Swal from "sweetalert2";
 
 const CHECKOUT_JS = import.meta.env.VITE_CHECKOUT_JS;
 
@@ -13,6 +13,7 @@ const PaymentForm = ({ values }) => {
   const [message, setMessage] = useState("");
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
+  const [isPaymentStarted, setIsPaymentStarted] = useState(false); // NEW
 
   useEffect(() => {
     setMessage("");
@@ -50,7 +51,9 @@ const PaymentForm = ({ values }) => {
     }
 
     setIsLoading(true);
+    setIsPaymentStarted(true); // Hide UI
     setMessage("");
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/checkout`,
@@ -91,33 +94,67 @@ const PaymentForm = ({ values }) => {
           onCompleted: async (event) => {
             console.log(event);
             checkout.unmount();
+
             const telemedicine = {
               account_reference: values.account_reference,
               id_number: values.id_number,
               last_name: values.lastName,
             };
-            await fetch(
-              `${
-                import.meta.env.VITE_BACKEND_URL
-              }/api/v1/carefirst/add_account`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(telemedicine),
+
+            try {
+              const response = await fetch(
+                `${
+                  import.meta.env.VITE_BACKEND_URL
+                }/api/v1/carefirst/add_account`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(telemedicine),
+                }
+              );
+
+              const result = await response.json();
+
+              if (response.ok) {
+                Swal.fire({
+                  icon: "success",
+                  title: "Account Created",
+                  text:
+                    result.message ||
+                    "Account successfully created in CareFirst.",
+                });
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Account Creation Failed",
+                  text:
+                    result.error ||
+                    "Something went wrong while creating the account.",
+                });
               }
-            );
+            } catch (err) {
+              console.error(err);
+              Swal.fire({
+                icon: "error",
+                title: "Network Error",
+                text: "Unable to connect to the server. Please try again.",
+              });
+            }
+
             setIsPaid(true);
           },
           onCancelled: (event) => {
             console.log(event);
             checkout.unmount();
+            setIsPaymentStarted(false); // Show UI again
             setMessage("❌ Payment Cancelled.");
           },
           onExpired: (event) => {
             console.log(event);
             checkout.unmount();
+            setIsPaymentStarted(false); // Show UI again
             setMessage("⌛ Payment Expired. Please try again.");
           },
         },
@@ -127,6 +164,7 @@ const PaymentForm = ({ values }) => {
     } catch (error) {
       console.error("Error fetching checkout ID:", error.message);
       setMessage("❌ Failed to initiate checkout. Please try again.");
+      setIsPaymentStarted(false); // In case of failure
     }
 
     setIsLoading(false);
@@ -145,28 +183,34 @@ const PaymentForm = ({ values }) => {
       <h2 className={style.header}>Payment Form</h2>
       <p className={style.headerText}>payment for {values.product_name}</p>
       <div>
-        <div className={style.paymentImg}>
-          <img src={botLogo} alt={"rotate"} style={{ objectFit: "contain" }} />
-        </div>
-        <div id="complete-checkout" className={style.paymentButton}>
-          <button
-            onClick={getCheckoutId}
-            disabled={!isScriptLoaded || isLoading}
-          >
-            {isLoading ? "Processing..." : "Pay Now"}
-          </button>
-        </div>
+        {!isPaymentStarted && (
+          <>
+            <div className={style.paymentImg}>
+              <img
+                src={botLogo}
+                alt={"rotate"}
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <div id="complete-checkout" className={style.paymentButton}>
+              <button
+                onClick={getCheckoutId}
+                disabled={!isScriptLoaded || isLoading}
+              >
+                {isLoading ? "Processing..." : "Pay Now"}
+              </button>
+            </div>
+          </>
+        )}
+
         <div className={style.paymentForm} id="payment-form"></div>
+
         {message && (
           <p style={{ color: "red", textAlign: "center" }}>{message}</p>
         )}
       </div>
     </>
   );
-};
-
-PaymentForm.propTypes = {
-  values: PropTypes.object,
 };
 
 export default PaymentForm;
